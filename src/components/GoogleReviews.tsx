@@ -180,77 +180,105 @@ const GoogleReviews = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 perspective-1000">
             {featuredReviews.map((review, index) => (
               <div 
                 key={review.id}
-                className={`group relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                style={{ transitionDelay: `${index * 200}ms` }}
+                className={`group relative transition-all duration-700 transform-gpu ${isVisible ? 'opacity-100 translate-y-0 rotate-x-0' : 'opacity-0 translate-y-10 rotate-x-12'}`}
+                style={{ 
+                  transitionDelay: `${index * 200}ms`,
+                  transformStyle: 'preserve-3d'
+                }}
               >
-                {/* Glow Effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-brass-gold via-emerald-light to-spice-red rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-                
-                <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-border/30 shadow-2xl hover:shadow-glow transition-all duration-500 hover:scale-105 hover:-translate-y-2">
-                  {/* Featured Badge */}
-                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-brass-gold to-spice-red text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
-                    ⭐ FEATURED
-                  </div>
-
-                  {/* Review Header */}
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="relative">
-                      <div className="w-20 h-20 bg-gradient-to-br from-brass-gold via-emerald-light to-spice-red rounded-full flex items-center justify-center text-white font-black text-xl shadow-lg">
-                        {review.avatar}
-                      </div>
-                      <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-emerald-light rounded-full flex items-center justify-center border-4 border-white shadow-lg">
-                        <Verified className="w-4 h-4 text-white" />
+                {/* 3D Container with enhanced shadows */}
+                <div className="relative group-hover:rotate-y-6 group-hover:rotate-x-2 transition-all duration-500 transform-gpu" style={{ transformStyle: 'preserve-3d' }}>
+                  {/* Multi-layered glow effects */}
+                  <div className="absolute -inset-2 bg-gradient-to-r from-brass-gold via-emerald-light to-spice-red rounded-3xl blur-3xl opacity-20 group-hover:opacity-60 group-hover:blur-2xl transition-all duration-500 animate-pulse"></div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-brass-gold/40 via-emerald-light/40 to-spice-red/40 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-all duration-500"></div>
+                  
+                  <div className="relative bg-white/95 backdrop-blur-md rounded-3xl p-8 border border-white/50 shadow-2xl hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] transition-all duration-500 hover:scale-105 hover:-translate-y-4" style={{ transform: 'translateZ(20px)' }}>
+                    {/* Floating Featured Badge with 3D effect */}
+                    <div className="absolute -top-6 -right-6 bg-gradient-to-br from-brass-gold via-spice-red to-brass-gold text-white px-5 py-2 rounded-full text-xs font-black shadow-2xl hover:scale-110 transition-all duration-300 animate-bounce" style={{ transform: 'translateZ(40px)' }}>
+                      <div className="flex items-center gap-1">
+                        <Star className="w-3 h-3 fill-current animate-spin" />
+                        FEATURED
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <h4 className="font-black text-foreground text-xl mb-1">{review.name}</h4>
-                      <div className="flex items-center gap-2 mb-2">
-                        <MapPin className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground">{review.location}</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="flex">
-                          {[...Array(review.rating)].map((_, i) => (
-                            <Star 
-                              key={i} 
-                              className="w-6 h-6 fill-brass-gold text-brass-gold animate-pulse" 
-                              style={{ animationDelay: `${i * 100}ms` }}
-                            />
-                          ))}
+
+                    {/* Review Header with enhanced 3D avatar */}
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="relative group-hover:rotate-y-12 transition-all duration-500" style={{ transformStyle: 'preserve-3d' }}>
+                        <div className="w-20 h-20 bg-gradient-to-br from-brass-gold via-emerald-light to-spice-red rounded-full flex items-center justify-center text-white font-black text-xl shadow-2xl hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.3)] transition-all duration-300" style={{ transform: 'translateZ(30px)' }}>
+                          {review.avatar}
                         </div>
-                        <span className="bg-brass-gold/20 text-brass-gold text-xs font-bold px-3 py-1 rounded-full">
-                          {review.date}
-                        </span>
+                        {/* 3D ring effect */}
+                        <div className="absolute inset-0 w-20 h-20 rounded-full border-2 border-brass-gold/30 animate-ping"></div>
+                        <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-emerald-light rounded-full flex items-center justify-center border-4 border-white shadow-xl hover:scale-125 transition-all duration-300" style={{ transform: 'translateZ(50px)' }}>
+                          <Verified className="w-4 h-4 text-white animate-pulse" />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-black text-foreground text-xl mb-1 group-hover:text-brass-gold transition-colors duration-300">{review.name}</h4>
+                        <div className="flex items-center gap-2 mb-2">
+                          <MapPin className="w-4 h-4 text-muted-foreground group-hover:text-emerald-light transition-colors duration-300" />
+                          <span className="text-sm text-muted-foreground group-hover:text-emerald-light transition-colors duration-300">{review.location}</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="flex group-hover:scale-110 transition-transform duration-300">
+                            {[...Array(review.rating)].map((_, i) => (
+                              <Star 
+                                key={i} 
+                                className="w-6 h-6 fill-brass-gold text-brass-gold hover:scale-125 transition-all duration-300" 
+                                style={{ 
+                                  animationDelay: `${i * 100}ms`,
+                                  transform: `translateZ(${10 + i * 5}px) rotateY(${i * 5}deg)`
+                                }}
+                              />
+                            ))}
+                          </div>
+                          <span className="bg-gradient-to-r from-brass-gold/20 to-spice-red/20 text-brass-gold text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm border border-brass-gold/30 group-hover:scale-105 transition-all duration-300">
+                            {review.date}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Review Content */}
-                  <div className="relative mb-6">
-                    <Quote className="absolute -top-4 -left-4 w-12 h-12 text-brass-gold/30" />
-                    <p className="text-muted-foreground leading-relaxed pl-8 text-lg font-medium italic">
-                      &quot;{review.text}&quot;
-                    </p>
-                  </div>
+                    {/* Enhanced Review Content with floating quote */}
+                    <div className="relative mb-6 group-hover:transform group-hover:translateZ-4 transition-all duration-500">
+                      <Quote className="absolute -top-4 -left-4 w-12 h-12 text-brass-gold/40 group-hover:text-brass-gold/60 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500" style={{ transform: 'translateZ(20px)' }} />
+                      <div className="relative bg-gradient-to-br from-white/50 to-transparent rounded-2xl p-6 backdrop-blur-sm border border-white/30">
+                        <p className="text-muted-foreground leading-relaxed text-lg font-medium italic group-hover:text-foreground transition-colors duration-300">
+                          &quot;{review.text}&quot;
+                        </p>
+                      </div>
+                      {/* Floating particles effect */}
+                      <div className="absolute top-2 right-2 w-2 h-2 bg-brass-gold/40 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+                      <div className="absolute bottom-4 left-8 w-1 h-1 bg-emerald-light/40 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
+                    </div>
 
-                  {/* Review Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-border/20">
-                    <div className="flex items-center gap-2">
-                      <img 
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
-                        alt="Google" 
-                        className="w-5 h-5"
-                      />
-                      <span className="text-sm font-semibold text-emerald-light">Google Verified</span>
+                    {/* Enhanced Review Footer with 3D elements */}
+                    <div className="flex items-center justify-between pt-4 border-t border-gradient-to-r from-brass-gold/20 via-emerald-light/20 to-spice-red/20">
+                      <div className="flex items-center gap-2 group-hover:scale-105 transition-all duration-300">
+                        <div className="relative">
+                          <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
+                            alt="Google" 
+                            className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300"
+                            style={{ transform: 'translateZ(10px)' }}
+                          />
+                          <div className="absolute inset-0 w-5 h-5 bg-emerald-light/20 rounded-full animate-pulse"></div>
+                        </div>
+                        <span className="text-sm font-semibold text-emerald-light group-hover:text-emerald-deep transition-colors duration-300">Google Verified</span>
+                      </div>
+                      <div className="flex items-center gap-1 group-hover:scale-105 transition-all duration-300 cursor-pointer">
+                        <ThumbsUp className="w-5 h-5 text-brass-gold group-hover:text-spice-red group-hover:scale-125 transition-all duration-300" style={{ transform: 'translateZ(15px)' }} />
+                        <span className="text-sm font-bold text-brass-gold group-hover:text-spice-red transition-colors duration-300">Helpful</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <ThumbsUp className="w-5 h-5 text-brass-gold" />
-                      <span className="text-sm font-bold text-brass-gold">Helpful</span>
-                    </div>
+
+                    {/* 3D depth indicator lines */}
+                    <div className="absolute top-4 right-4 w-1 h-8 bg-gradient-to-b from-brass-gold/30 to-transparent" style={{ transform: 'translateZ(60px) rotateX(45deg)' }}></div>
+                    <div className="absolute bottom-4 left-4 w-8 h-1 bg-gradient-to-r from-emerald-light/30 to-transparent" style={{ transform: 'translateZ(60px) rotateY(45deg)' }}></div>
                   </div>
                 </div>
               </div>
