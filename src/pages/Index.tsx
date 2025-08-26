@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import GamifiedHero from "@/components/GamifiedHero";
+import HeroSection from "@/components/HeroSection";
 import MenuSection from "@/components/MenuSection";
 import AboutSection from "@/components/AboutSection";
 import ReservationSection from "@/components/ReservationSection";
@@ -115,9 +115,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Gamified Hero */}
+      {/* Hero Section */}
       <div id="home">
-        <GamifiedHero onOrderNow={() => scrollToSection('menu')} />
+        <HeroSection onOrderNow={() => scrollToSection('menu')} />
       </div>
 
       {/* Branch Selection */}
