@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Plus, Minus, Star, MapPin } from "lucide-react";
 
 // Import dish images
@@ -223,17 +224,21 @@ const MenuSection = ({
   onAddToCart,
   selectedBranch
 }: MenuSectionProps) => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
   const [quantities, setQuantities] = useState<{
     [key: number]: number;
   }>({});
-  const filteredMenu = selectedCategory === 'all' ? menuData : menuData.filter(item => item.category === selectedCategory);
+  
+  const getMenuByCategory = (categoryId: string) => {
+    return categoryId === 'all' ? menuData : menuData.filter(item => item.category === categoryId);
+  };
+
   const updateQuantity = (itemId: number, change: number) => {
     setQuantities(prev => ({
       ...prev,
       [itemId]: Math.max(0, (prev[itemId] || 0) + change)
     }));
   };
+  
   const addToCart = (item: MenuItem) => {
     const quantity = quantities[item.id] || 1;
     onAddToCart(item, quantity);
@@ -242,6 +247,7 @@ const MenuSection = ({
       [item.id]: 0
     }));
   };
+  
   const SpiceIndicator = ({
     level
   }: {
@@ -249,6 +255,78 @@ const MenuSection = ({
   }) => <div className="flex gap-1">
       {[1, 2, 3].map(i => <div key={i} className={`w-2 h-2 rounded-full ${i <= level ? 'bg-spice-red' : 'bg-muted'}`} />)}
     </div>;
+
+  const MenuGrid = ({ items }: { items: MenuItem[] }) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {items.map(item => (
+        <div key={item.id} className="card-premium overflow-hidden group">
+          {/* Dish Image */}
+          {item.image && (
+            <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+              <img 
+                src={item.image} 
+                alt={item.name} 
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+              />
+              <div className="absolute top-3 right-3 bg-emerald-deep/90 text-ivory-warm px-2 py-1 rounded-full text-sm font-medium">
+                RM {item.price}
+              </div>
+            </div>
+          )}
+          
+          <div className="p-6 pt-0">
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold text-foreground mb-2">
+                {item.name}
+              </h3>
+              <p className="text-muted-foreground mb-3 leading-relaxed text-sm">
+                {item.description}
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Star className="w-4 h-4 fill-brass-gold text-brass-gold" />
+                <span className="text-sm font-medium">{item.rating}</span>
+              </div>
+              <SpiceIndicator level={item.spiceLevel} />
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <button 
+                  onClick={() => updateQuantity(item.id, -1)} 
+                  className="w-8 h-8 rounded-full bg-muted hover:bg-emerald-light/20 flex items-center justify-center transition-colors" 
+                  disabled={!quantities[item.id]}
+                >
+                  <Minus size={16} />
+                </button>
+                <span className="w-8 text-center font-medium">
+                  {quantities[item.id] || 0}
+                </span>
+                <button 
+                  onClick={() => updateQuantity(item.id, 1)} 
+                  className="w-8 h-8 rounded-full bg-emerald-light/20 hover:bg-emerald-light/40 flex items-center justify-center transition-colors"
+                >
+                  <Plus size={16} />
+                </button>
+              </div>
+
+              <Button 
+                variant="order" 
+                size="sm" 
+                onClick={() => addToCart(item)} 
+                disabled={!quantities[item.id]} 
+                className="opacity-100 group-hover:opacity-100 transition-opacity"
+              >
+                Add to Cart
+              </Button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
   // Show branch selection message if no branch is selected
   if (!selectedBranch) {
@@ -269,63 +347,27 @@ const MenuSection = ({
           </div>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map(category => <button key={category.id} onClick={() => setSelectedCategory(category.id)} className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${selectedCategory === category.id ? 'bg-emerald-deep text-ivory-warm shadow-lg' : 'bg-card text-card-foreground hover:bg-emerald-light/10 hover:text-emerald-deep border border-border'}`}>
-              <span className="mr-2">{category.icon}</span>
-              {category.name}
-            </button>)}
-        </div>
+        {/* Tabbed Menu */}
+        <Tabs defaultValue="all" className="w-full">
+          <TabsList className="grid w-full grid-cols-5 mb-8">
+            {categories.map(category => (
+              <TabsTrigger 
+                key={category.id} 
+                value={category.id}
+                className="flex items-center gap-2 px-4 py-3"
+              >
+                <span>{category.icon}</span>
+                <span className="hidden sm:inline">{category.name}</span>
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-        {/* Menu Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredMenu.map(item => <div key={item.id} className="card-premium overflow-hidden group">
-              {/* Dish Image */}
-              {item.image && <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                  <div className="absolute top-3 right-3 bg-emerald-deep/90 text-ivory-warm px-2 py-1 rounded-full text-sm font-medium">
-                    RM {item.price}
-                  </div>
-                </div>}
-              
-              <div className="p-6 pt-0">
-                <div className="mb-4">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {item.name}
-                  </h3>
-                  <p className="text-muted-foreground mb-3 leading-relaxed text-sm">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <Star className="w-4 h-4 fill-brass-gold text-brass-gold" />
-                    <span className="text-sm font-medium">{item.rating}</span>
-                  </div>
-                  <SpiceIndicator level={item.spiceLevel} />
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <button onClick={() => updateQuantity(item.id, -1)} className="w-8 h-8 rounded-full bg-muted hover:bg-emerald-light/20 flex items-center justify-center transition-colors" disabled={!quantities[item.id]}>
-                      <Minus size={16} />
-                    </button>
-                    <span className="w-8 text-center font-medium">
-                      {quantities[item.id] || 0}
-                    </span>
-                    <button onClick={() => updateQuantity(item.id, 1)} className="w-8 h-8 rounded-full bg-emerald-light/20 hover:bg-emerald-light/40 flex items-center justify-center transition-colors">
-                      <Plus size={16} />
-                    </button>
-                  </div>
-
-                  <Button variant="order" size="sm" onClick={() => addToCart(item)} disabled={!quantities[item.id]} className="opacity-100 group-hover:opacity-100 transition-opacity">
-                    Add to Cart
-                  </Button>
-                </div>
-              </div>
-            </div>)}
-        </div>
+          {categories.map(category => (
+            <TabsContent key={category.id} value={category.id}>
+              <MenuGrid items={getMenuByCategory(category.id)} />
+            </TabsContent>
+          ))}
+        </Tabs>
       </div>
     </section>;
 };
