@@ -37,8 +37,8 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
-      {/* Authentic Pakistani Background */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-stone-50 via-slate-50 to-zinc-50">
+      {/* Premium Background */}
       <div className="absolute inset-0">
         <div className="relative w-full h-full">
           <img
@@ -46,15 +46,15 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
             alt="Khanjee Restaurant"
             className="w-full h-full object-cover transition-all duration-1000"
           />
-          {/* Green-inspired Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/85 via-green-800/70 to-teal-800/60"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          {/* Elegant Neutral Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-stone-900/60 to-slate-800/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           
-          {/* Subtle Pattern Overlay */}
-          <div className="absolute inset-0 opacity-10">
+          {/* Subtle Premium Pattern */}
+          <div className="absolute inset-0 opacity-5">
             <div className="w-full h-full" style={{
-              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(16,185,129,0.3) 0%, transparent 50%), 
-                               radial-gradient(circle at 75% 75%, rgba(5,150,105,0.3) 0%, transparent 50%)`
+              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%), 
+                                radial-gradient(circle at 75% 75%, rgba(212,175,55,0.1) 0%, transparent 50%)`
             }}></div>
           </div>
         </div>
@@ -91,60 +91,54 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
 
         {/* Main Brand Heading */}
         <div className="mb-8 animate-fade-in-up">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-transparent bg-gradient-to-br from-emerald-200 via-brass-gold to-green-200 bg-clip-text mb-4 tracking-tight leading-none drop-shadow-lg">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-transparent bg-gradient-to-br from-white via-stone-200 to-brass-gold bg-clip-text mb-4 tracking-tight leading-none drop-shadow-lg">
             KHANJEE
           </h1>
           <div className="relative">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-light text-emerald-100 mb-2 tracking-wide">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-light text-stone-200 mb-2 tracking-wide">
               {heroImages[currentImage].title}
             </h2>
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-brass-gold/60 to-transparent"></div>
           </div>
         </div>
 
-        {/* Authentic Description */}
+        {/* Premium Description */}
         <div className="mb-8 animate-fade-in-delayed">
-          <p className="text-xl md:text-2xl lg:text-3xl text-emerald-50 mb-4 max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
+          <p className="text-xl md:text-2xl lg:text-3xl text-stone-100 mb-4 max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
             {heroImages[currentImage].subtitle}
           </p>
-          <div className="text-sm md:text-base text-emerald-200 bg-gradient-to-r from-emerald-900/30 to-green-900/30 backdrop-blur-sm rounded-full px-6 py-2 inline-block border border-emerald-400/30">
+          <div className="text-sm md:text-base text-stone-300 bg-gradient-to-r from-black/20 to-stone-900/20 backdrop-blur-sm rounded-full px-6 py-2 inline-block border border-stone-400/20">
             {heroImages[currentImage].stats}
           </div>
         </div>
 
-        {/* Highlighted CTA Section */}
+        {/* Premium CTA Section */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 animate-fade-in-up-delayed">
           <div className="flex flex-col sm:flex-row gap-6">
-            {/* Primary CTA - Extra Highlighted */}
+            {/* Primary CTA - Minimal Premium */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-green-400 to-brass-gold rounded-2xl blur-xl opacity-75 group-hover:opacity-100 animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-brass-gold/20 to-stone-400/20 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
               <Button
                 variant="brass"
                 size="xl"
                 onClick={onOrderNow}
-                className="relative group overflow-hidden bg-gradient-to-r from-emerald-500 via-green-500 to-brass-gold hover:from-brass-gold hover:via-emerald-500 hover:to-green-500 text-white font-black px-10 py-5 text-xl border-4 border-white/30 shadow-2xl hover:shadow-emerald-500/50 transition-all duration-300 transform hover:scale-110 rounded-2xl"
+                className="relative group overflow-hidden bg-gradient-to-r from-stone-800 to-slate-800 hover:from-brass-gold hover:to-stone-700 text-white font-bold px-8 py-4 text-lg border border-stone-300/30 shadow-lg hover:shadow-brass-gold/20 transition-all duration-300 transform hover:scale-105 rounded-xl backdrop-blur-sm"
               >
-                <span className="relative z-10 flex items-center gap-3 drop-shadow-lg">
-                  <span className="text-2xl animate-bounce">🍽️</span>
-                  Order Authentic Pakistani Food
+                <span className="relative z-10 flex items-center gap-3">
+                  Order Now
                 </span>
-                <ChevronRight className="group-hover:translate-x-2 transition-transform relative z-10 drop-shadow-lg" size={28} />
-                
-                {/* Shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                <ChevronRight className="group-hover:translate-x-1 transition-transform relative z-10" size={20} />
               </Button>
             </div>
             
-            {/* Secondary CTA - Also Enhanced */}
+            {/* Secondary CTA - Minimal */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-brass-gold to-emerald-400 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
               <Button
                 variant="outline"
                 size="xl"
-                className="relative group bg-gradient-to-r from-emerald-900/40 to-green-900/40 border-4 border-emerald-300/60 text-emerald-100 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-brass-gold hover:text-white hover:border-white backdrop-blur-sm transition-all duration-300 px-10 py-5 text-xl font-bold transform hover:scale-105 rounded-2xl shadow-xl"
+                className="relative group bg-transparent border border-stone-300/40 text-stone-200 hover:bg-stone-800/50 hover:text-white hover:border-stone-300/60 backdrop-blur-sm transition-all duration-300 px-8 py-4 text-lg font-medium transform hover:scale-105 rounded-xl"
               >
-                <span className="flex items-center gap-3 drop-shadow-lg">
-                  <span className="text-2xl">📞</span>
+                <span className="flex items-center gap-3">
                   Reserve Table
                 </span>
               </Button>
@@ -154,18 +148,18 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
 
         {/* Restaurant Info Bar */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <div className="flex items-center gap-3 text-emerald-100 bg-gradient-to-r from-emerald-900/40 to-green-900/40 backdrop-blur-sm rounded-full px-6 py-3 border border-emerald-400/30">
+          <div className="flex items-center gap-3 text-stone-200 bg-gradient-to-r from-stone-900/40 to-slate-900/40 backdrop-blur-sm rounded-full px-6 py-3 border border-stone-400/20">
             <Clock size={18} />
             <span className="text-base font-medium">Open Daily 11:30 AM - 11:00 PM</span>
           </div>
           
-          <div className="flex items-center gap-3 text-emerald-100 bg-gradient-to-r from-green-900/30 to-teal-900/30 backdrop-blur-sm rounded-full px-6 py-3 border border-green-400/30">
+          <div className="flex items-center gap-3 text-stone-200 bg-gradient-to-r from-slate-900/30 to-zinc-900/30 backdrop-blur-sm rounded-full px-6 py-3 border border-stone-400/20">
             <div className="w-2 h-2 bg-brass-gold rounded-full animate-pulse"></div>
             <span className="text-base font-medium">🚗 Free Delivery • Halal Certified</span>
           </div>
         </div>
 
-        {/* Enhanced Image Indicators */}
+        {/* Minimal Image Indicators */}
         <div className="flex justify-center gap-4">
           {heroImages.map((_, index) => (
             <button
@@ -179,8 +173,8 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
             >
               <div className={`w-12 h-1 rounded-full transition-all duration-300 ${
                 index === currentImage
-                  ? 'bg-gradient-to-r from-emerald-400 via-brass-gold to-green-400 shadow-lg shadow-emerald-400/50'
-                  : 'bg-emerald-300/30 hover:bg-emerald-300/50'
+                  ? 'bg-gradient-to-r from-stone-400 via-brass-gold to-stone-400 shadow-lg shadow-brass-gold/30'
+                  : 'bg-stone-400/30 hover:bg-stone-400/50'
               }`}></div>
             </button>
           ))}
