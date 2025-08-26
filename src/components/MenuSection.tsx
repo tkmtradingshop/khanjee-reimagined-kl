@@ -506,129 +506,127 @@ const MenuSection = ({ onAddToCart, selectedBranch }: MenuSectionProps) => {
     </div>
   );
 
-  // Show branch selection message if no branch is selected
-  if (!selectedBranch) {
-    return (
-      <section id="menu" className="py-16 bg-gradient-to-b from-background to-accent/5">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-              Select a Branch to View Menu
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Please choose your nearest branch above to see our menu and place orders
-            </p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className="py-16 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-foreground mb-4 cultural-accent">
-            Our Menu
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Authentic Pakistani flavors crafted with traditional recipes and premium ingredients
-          </p>
-          <div className="mt-4 flex items-center justify-center text-sm text-muted-foreground">
-            <MapPin className="w-4 h-4 mr-1" />
-            Ordering from: <span className="font-medium text-primary ml-1">{selectedBranch.name}</span>
+      {/* Show branch selection message if no branch is selected */}
+      {!selectedBranch ? (
+        <div className="py-16 bg-gradient-to-b from-background to-accent/5">
+          <div className="container mx-auto px-6">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-foreground mb-4">
+                Select a Branch to View Menu
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Please choose your nearest branch above to see our menu and place orders
+              </p>
+            </div>
           </div>
         </div>
+      ) : (
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-foreground mb-4 cultural-accent">
+              Our Menu
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Authentic Pakistani flavors crafted with traditional recipes and premium ingredients
+            </p>
+            <div className="mt-4 flex items-center justify-center text-sm text-muted-foreground">
+              <MapPin className="w-4 h-4 mr-1" />
+              Ordering from: <span className="font-medium text-primary ml-1">{selectedBranch.name}</span>
+            </div>
+          </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map(category => (
-            <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                selectedCategory === category.id
-                  ? 'bg-emerald-deep text-ivory-warm shadow-lg'
-                  : 'bg-card text-card-foreground hover:bg-emerald-light/10 hover:text-emerald-deep border border-border'
-              }`}
-            >
-              <span className="mr-2">{category.icon}</span>
-              {category.name}
-            </button>
-          ))}
-        </div>
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map(category => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                  selectedCategory === category.id
+                    ? 'bg-emerald-deep text-ivory-warm shadow-lg'
+                    : 'bg-card text-card-foreground hover:bg-emerald-light/10 hover:text-emerald-deep border border-border'
+                }`}
+              >
+                <span className="mr-2">{category.icon}</span>
+                {category.name}
+              </button>
+            ))}
+          </div>
 
-        {/* Menu Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredMenu.map(item => (
-            <div key={item.id} className="card-premium overflow-hidden group">
-              {/* Dish Image */}
-              {item.image && (
-                <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute top-3 right-3 bg-emerald-deep/90 text-ivory-warm px-2 py-1 rounded-full text-sm font-medium">
-                    RM {item.price}
+          {/* Menu Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredMenu.map(item => (
+              <div key={item.id} className="card-premium overflow-hidden group">
+                {/* Dish Image */}
+                {item.image && (
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <img 
+                      src={item.image} 
+                      alt={item.name}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute top-3 right-3 bg-emerald-deep/90 text-ivory-warm px-2 py-1 rounded-full text-sm font-medium">
+                      RM {item.price}
+                    </div>
                   </div>
-                </div>
-              )}
-              
-              <div className="p-6 pt-0">
-                <div className="mb-4">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {item.name}
-                  </h3>
-                  <p className="text-muted-foreground mb-3 leading-relaxed text-sm">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <Star className="w-4 h-4 fill-brass-gold text-brass-gold" />
-                    <span className="text-sm font-medium">{item.rating}</span>
+                )}
+                
+                <div className="p-6 pt-0">
+                  <div className="mb-4">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      {item.name}
+                    </h3>
+                    <p className="text-muted-foreground mb-3 leading-relaxed text-sm">
+                      {item.description}
+                    </p>
                   </div>
-                  <SpiceIndicator level={item.spiceLevel} />
-                </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => updateQuantity(item.id, -1)}
-                      className="w-8 h-8 rounded-full bg-muted hover:bg-emerald-light/20 flex items-center justify-center transition-colors"
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <Star className="w-4 h-4 fill-brass-gold text-brass-gold" />
+                      <span className="text-sm font-medium">{item.rating}</span>
+                    </div>
+                    <SpiceIndicator level={item.spiceLevel} />
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => updateQuantity(item.id, -1)}
+                        className="w-8 h-8 rounded-full bg-muted hover:bg-emerald-light/20 flex items-center justify-center transition-colors"
+                        disabled={!quantities[item.id]}
+                      >
+                        <Minus size={16} />
+                      </button>
+                      <span className="w-8 text-center font-medium">
+                        {quantities[item.id] || 0}
+                      </span>
+                      <button
+                        onClick={() => updateQuantity(item.id, 1)}
+                        className="w-8 h-8 rounded-full bg-emerald-light/20 hover:bg-emerald-light/40 flex items-center justify-center transition-colors"
+                      >
+                        <Plus size={16} />
+                      </button>
+                    </div>
+
+                    <Button
+                      variant="order"
+                      size="sm"
+                      onClick={() => addToCart(item)}
                       disabled={!quantities[item.id]}
+                      className="opacity-100 group-hover:opacity-100 transition-opacity"
                     >
-                      <Minus size={16} />
-                    </button>
-                    <span className="w-8 text-center font-medium">
-                      {quantities[item.id] || 0}
-                    </span>
-                    <button
-                      onClick={() => updateQuantity(item.id, 1)}
-                      className="w-8 h-8 rounded-full bg-emerald-light/20 hover:bg-emerald-light/40 flex items-center justify-center transition-colors"
-                    >
-                      <Plus size={16} />
-                    </button>
+                      Add to Cart
+                    </Button>
                   </div>
-
-                  <Button
-                    variant="order"
-                    size="sm"
-                    onClick={() => addToCart(item)}
-                    disabled={!quantities[item.id]}
-                    className="opacity-100 group-hover:opacity-100 transition-opacity"
-                  >
-                    Add to Cart
-                  </Button>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
