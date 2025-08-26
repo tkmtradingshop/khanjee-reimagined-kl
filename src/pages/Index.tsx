@@ -10,7 +10,7 @@ import FloatingNav from "@/components/FloatingNav";
 import CartSheet from "@/components/CartSheet";
 import BranchSelector from "@/components/BranchSelector";
 import GoogleReviews from "@/components/GoogleReviews";
-import VipClubSignup from "@/components/VipClubSignup";
+import MinimalSignup from "@/components/MinimalSignup";
 import LiveOrderNotifications from "@/components/LiveOrderNotifications";
 import DeliveryProgressBar from "@/components/DeliveryProgressBar";
 import RecommendedDishes from "@/components/RecommendedDishes";
@@ -141,8 +141,8 @@ const Index = () => {
         <AboutSection />
       </div>
 
-      {/* VIP Club Signup */}
-      <VipClubSignup />
+      {/* Minimal Signup */}
+      <MinimalSignup />
 
       {/* Reservation Section */}
       <div id="reserve">
