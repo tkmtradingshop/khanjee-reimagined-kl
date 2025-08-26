@@ -37,7 +37,7 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-500/20 via-pink-500/10 to-blue-500/20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Simplified Dynamic Background */}
       <div className="absolute inset-0">
         <div className="relative w-full h-full">
@@ -46,9 +46,9 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
             alt="Khanjee Restaurant"
             className="w-full h-full object-cover transition-all duration-1000"
           />
-          {/* Gen Z Color Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/80 via-pink-500/60 to-blue-600/40"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          {/* Neutral Minimal Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-gray-900/50 to-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
         </div>
       </div>
 
@@ -56,47 +56,47 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         {/* Live Stats Bar */}
         <div className="mb-6 flex flex-wrap justify-center gap-4 animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-md rounded-full px-4 py-2 text-white text-xs font-medium border border-purple-400/30">
-            <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-xs font-medium border border-white/20">
+            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
             <Users size={14} />
             247 people vibing
           </div>
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500/20 to-blue-500/20 backdrop-blur-md rounded-full px-4 py-2 text-white text-xs font-medium border border-pink-400/30">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-xs font-medium border border-white/20">
             <Star size={14} />
             4.9 ★ (Gen Z approved)
           </div>
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-md rounded-full px-4 py-2 text-white text-xs font-medium border border-blue-400/30">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-xs font-medium border border-white/20">
             <Award size={14} />
             TikTok Famous Restaurant
           </div>
         </div>
 
         {/* Location Badge */}
-        <div className="mb-6 inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-medium border border-purple-400/40">
-          <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
+        <div className="mb-6 inline-flex items-center gap-2 bg-black/20 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-medium border border-white/30">
+          <div className="w-2 h-2 bg-gray-300 rounded-full animate-pulse"></div>
           <MapPin size={16} />
           KL • Where the cool kids eat 😎
         </div>
 
-        {/* Main Heading with Gen Z Typography */}
+        {/* Main Heading with Minimalist Typography */}
         <div className="mb-8 animate-fade-in-up">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-transparent bg-gradient-to-br from-pink-400 via-purple-400 to-blue-400 bg-clip-text mb-4 tracking-tight leading-none">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-4 tracking-tight leading-none">
             KHANJEE
           </h1>
           <div className="relative">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-light text-white mb-2 tracking-wide">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-light text-gray-200 mb-2 tracking-wide">
               {heroImages[currentImage].title}
             </h2>
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-pink-400 to-transparent"></div>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
           </div>
         </div>
 
         {/* Subtitle with Stats */}
         <div className="mb-8 animate-fade-in-delayed">
-          <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-4 max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
+          <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-4 max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
             {heroImages[currentImage].subtitle}
           </p>
-          <div className="text-sm md:text-base text-white bg-purple-600/20 backdrop-blur-sm rounded-full px-6 py-2 inline-block border border-pink-400/20">
+          <div className="text-sm md:text-base text-gray-200 bg-black/20 backdrop-blur-sm rounded-full px-6 py-2 inline-block border border-gray-400/20">
             {heroImages[currentImage].stats}
           </div>
         </div>
@@ -108,7 +108,7 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
               variant="brass"
               size="xl"
               onClick={onOrderNow}
-              className="group relative overflow-hidden bg-gradient-to-r from-pink-500 to-purple-500 hover:from-purple-500 hover:to-pink-500 transition-all duration-300 transform hover:scale-105 px-8 py-4 text-lg font-semibold text-white border-2 border-pink-400/30"
+              className="group relative overflow-hidden bg-white text-black hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 px-8 py-4 text-lg font-semibold border-2 border-gray-300"
             >
               <span className="relative z-10">🔥 Order Now</span>
               <ChevronRight className="group-hover:translate-x-1 transition-transform relative z-10" size={24} />
@@ -117,7 +117,7 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
             <Button
               variant="outline"
               size="xl"
-              className="group bg-blue-500/20 border-2 border-blue-400/30 text-white hover:bg-blue-500 hover:text-white backdrop-blur-sm transition-all duration-300 px-8 py-4 text-lg font-semibold"
+              className="group bg-transparent border-2 border-white/30 text-white hover:bg-white hover:text-black backdrop-blur-sm transition-all duration-300 px-8 py-4 text-lg font-semibold"
             >
               <span>📱 Book Table</span>
             </Button>
@@ -126,13 +126,13 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
 
         {/* Live Info Bar */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <div className="flex items-center gap-3 text-white bg-purple-600/30 backdrop-blur-sm rounded-full px-6 py-3 border border-purple-400/20">
+          <div className="flex items-center gap-3 text-white bg-black/30 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
             <Clock size={18} />
             <span className="text-base font-medium">Open Daily 11:30 AM - 11:00 PM</span>
           </div>
           
-          <div className="flex items-center gap-3 text-white bg-pink-500/20 backdrop-blur-sm rounded-full px-6 py-3 border border-pink-400/30">
-            <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
+          <div className="flex items-center gap-3 text-white bg-black/20 backdrop-blur-sm rounded-full px-6 py-3 border border-white/30">
+            <div className="w-2 h-2 bg-gray-300 rounded-full animate-pulse"></div>
             <span className="text-base font-medium">🚚 Fast Delivery • 15-25 min</span>
           </div>
         </div>
@@ -151,8 +151,8 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
             >
               <div className={`w-12 h-1 rounded-full transition-all duration-300 ${
                 index === currentImage
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400'
-                  : 'bg-white/20 hover:bg-white/40'
+                  ? 'bg-white'
+                  : 'bg-white/30 hover:bg-white/50'
               }`}></div>
             </button>
           ))}
