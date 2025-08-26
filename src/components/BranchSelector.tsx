@@ -20,35 +20,35 @@ interface BranchSelectorProps {
 }
 const branches: Branch[] = [{
   id: 1,
-  name: "Khanjee Ampang",
-  address: "Jalan Ampang, 50450 Kuala Lumpur",
-  phone: "+60 3-4021 2345",
+  name: "Khanjee 1",
+  address: "No. 45, Jalan Masjid India, 50100 Kuala Lumpur",
+  phone: "+60 3-2692 1234",
   hours: "11:00 AM - 11:00 PM",
   coordinates: {
-    lat: 3.1569,
-    lng: 101.7581
+    lat: 3.1516,
+    lng: 101.6942
   },
   deliveryTime: "25-35 mins"
 }, {
   id: 2,
-  name: "Khanjee KLCC",
-  address: "Suria KLCC, 50088 Kuala Lumpur",
-  phone: "+60 3-2166 5678",
-  hours: "10:00 AM - 10:00 PM",
+  name: "Khanjee 2", 
+  address: "G-12, Jalan TAR, Chow Kit, 53000 Kuala Lumpur",
+  phone: "+60 3-4041 5678",
+  hours: "11:00 AM - 11:30 PM",
   coordinates: {
-    lat: 3.1576,
-    lng: 101.7119
+    lat: 3.1673,
+    lng: 101.6958
   },
   deliveryTime: "30-40 mins"
 }, {
   id: 3,
-  name: "Khanjee Bangsar",
-  address: "Bangsar Village, 59200 Kuala Lumpur",
-  phone: "+60 3-2282 9876",
+  name: "Khanjee 3",
+  address: "23, Jalan Dato Abdul Rahman, Brickfields, 50470 Kuala Lumpur",
+  phone: "+60 3-2274 9876",
   hours: "11:00 AM - 12:00 AM",
   coordinates: {
-    lat: 3.1285,
-    lng: 101.6739
+    lat: 3.1336,
+    lng: 101.6869
   },
   deliveryTime: "20-30 mins"
 }];
