@@ -10,7 +10,7 @@ import FloatingNav from "@/components/FloatingNav";
 import CartSheet from "@/components/CartSheet";
 import BranchSelector from "@/components/BranchSelector";
 import GoogleReviews from "@/components/GoogleReviews";
-import LoyaltyRewards from "@/components/LoyaltyRewards";
+import VipClubSignup from "@/components/VipClubSignup";
 import LiveOrderNotifications from "@/components/LiveOrderNotifications";
 import DeliveryProgressBar from "@/components/DeliveryProgressBar";
 import RecommendedDishes from "@/components/RecommendedDishes";
@@ -141,8 +141,8 @@ const Index = () => {
         <AboutSection />
       </div>
 
-      {/* Loyalty Rewards */}
-      <LoyaltyRewards />
+      {/* VIP Club Signup */}
+      <VipClubSignup />
 
       {/* Reservation Section */}
       <div id="reserve">
