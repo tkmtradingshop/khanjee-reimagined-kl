@@ -1,29 +1,29 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, MapPin, Clock, Star, Users, Award } from "lucide-react";
-import heroBiryaniPremium from "@/assets/hero-biryani-premium.jpg";
-import heroBBQPremium from "@/assets/hero-bbq-premium.jpg";
-import heroChapliKebab from "@/assets/hero-chapli-kebab.jpg";
+import heroBiryaniPremium from "@/assets/hero-mutton-biryani-saffron.jpg";
+import heroBBQPremium from "@/assets/hero-mixed-bbq-sizzling.jpg";
+import heroChapliKebab from "@/assets/hero-chicken-karahi-premium.jpg";
 
 const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
   const heroImages = [
     {
       src: heroBiryaniPremium,
-      title: "Signature Biryani",
-      subtitle: "Aromatic saffron rice with premium cuts",
-      stats: "⭐ 4.9 Rating • 🍽️ Most Ordered",
+      title: "Saffron Mutton Biryani",
+      subtitle: "Golden basmati rice layered with tender mutton & aromatic saffron",
+      stats: "🏆 Customer's #1 Choice • 🌟 Premium Saffron",
     },
     {
       src: heroBBQPremium,
-      title: "Artisan BBQ",
-      subtitle: "Charcoal-grilled perfection with ancient spices",
-      stats: "🔥 Chef's Special • 👨‍🍳 Award Winning",
+      title: "Sizzling BBQ Platter",
+      subtitle: "Mixed grill perfection with seekh kebabs, tikka & beef boti",
+      stats: "🔥 Chef's Signature • 🥩 Fresh from Tandoor",
     },
     {
       src: heroChapliKebab,
-      title: "Chapli Kebab",
-      subtitle: "Authentic Peshawar-style flat kebabs with traditional spices",
-      stats: "🥩 House Specialty • 🌶️ Perfect Spice Level",
+      title: "Chicken Karahi",
+      subtitle: "Traditional copper wok cooking with rich tomato curry & spices",
+      stats: "🍛 Most Authentic • 🌶️ Perfect Heat Level",
     },
   ];
 
