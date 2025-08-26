@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Calendar, Clock, Users, Phone } from "lucide-react";
-
 const ReservationSection = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -14,28 +13,19 @@ const ReservationSection = () => {
     guests: '2',
     specialRequests: ''
   });
-
-  const timeSlots = [
-    '11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM',
-    '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM',
-    '9:00 PM', '9:30 PM', '10:00 PM'
-  ];
-
+  const timeSlots = ['11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM'];
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Placeholder for reservation logic
     alert(`Reservation request submitted for ${formData.name} on ${formData.date} at ${formData.time}`);
   };
-
-  return (
-    <section className="py-16 bg-background">
+  return <section className="py-16 bg-background mx-[100px] my-0">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4 cultural-accent">
@@ -52,98 +42,45 @@ const ReservationSection = () => {
               {/* Name */}
               <div>
                 <Label htmlFor="name" className="text-foreground font-medium">Full Name *</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="mt-2"
-                  placeholder="Your full name"
-                />
+                <Input id="name" name="name" type="text" required value={formData.name} onChange={handleInputChange} className="mt-2" placeholder="Your full name" />
               </div>
 
               {/* Phone */}
               <div>
                 <Label htmlFor="phone" className="text-foreground font-medium">Phone Number *</Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="mt-2"
-                  placeholder="+60 12-345 6789"
-                />
+                <Input id="phone" name="phone" type="tel" required value={formData.phone} onChange={handleInputChange} className="mt-2" placeholder="+60 12-345 6789" />
               </div>
 
               {/* Email */}
               <div>
                 <Label htmlFor="email" className="text-foreground font-medium">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="mt-2"
-                  placeholder="your.email@example.com"
-                />
+                <Input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} className="mt-2" placeholder="your.email@example.com" />
               </div>
 
               {/* Guests */}
               <div>
                 <Label htmlFor="guests" className="text-foreground font-medium">Number of Guests *</Label>
-                <select
-                  id="guests"
-                  name="guests"
-                  required
-                  value={formData.guests}
-                  onChange={handleInputChange}
-                  className="mt-2 w-full h-10 px-3 py-2 border border-input bg-background rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                >
-                  {[1,2,3,4,5,6,7,8,9,10].map(num => (
-                    <option key={num} value={num.toString()}>
+                <select id="guests" name="guests" required value={formData.guests} onChange={handleInputChange} className="mt-2 w-full h-10 px-3 py-2 border border-input bg-background rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => <option key={num} value={num.toString()}>
                       {num} {num === 1 ? 'Guest' : 'Guests'}
-                    </option>
-                  ))}
+                    </option>)}
                 </select>
               </div>
 
               {/* Date */}
               <div>
                 <Label htmlFor="date" className="text-foreground font-medium">Preferred Date *</Label>
-                <Input
-                  id="date"
-                  name="date"
-                  type="date"
-                  required
-                  value={formData.date}
-                  onChange={handleInputChange}
-                  className="mt-2"
-                  min={new Date().toISOString().split('T')[0]}
-                />
+                <Input id="date" name="date" type="date" required value={formData.date} onChange={handleInputChange} className="mt-2" min={new Date().toISOString().split('T')[0]} />
               </div>
 
               {/* Time */}
               <div>
                 <Label htmlFor="time" className="text-foreground font-medium">Preferred Time *</Label>
-                <select
-                  id="time"
-                  name="time"
-                  required
-                  value={formData.time}
-                  onChange={handleInputChange}
-                  className="mt-2 w-full h-10 px-3 py-2 border border-input bg-background rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                >
+                <select id="time" name="time" required value={formData.time} onChange={handleInputChange} className="mt-2 w-full h-10 px-3 py-2 border border-input bg-background rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
                   <option value="">Select time</option>
-                  {timeSlots.map(time => (
-                    <option key={time} value={time}>
+                  {timeSlots.map(time => <option key={time} value={time}>
                       {time}
-                    </option>
-                  ))}
+                    </option>)}
                 </select>
               </div>
             </div>
@@ -151,14 +88,7 @@ const ReservationSection = () => {
             {/* Special Requests */}
             <div className="mb-6">
               <Label htmlFor="specialRequests" className="text-foreground font-medium">Special Requests</Label>
-              <textarea
-                id="specialRequests"
-                name="specialRequests"
-                value={formData.specialRequests}
-                onChange={handleInputChange}
-                className="mt-2 w-full min-h-[100px] px-3 py-2 border border-input bg-background rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                placeholder="Any dietary restrictions, celebrations, or special accommodations..."
-              />
+              <textarea id="specialRequests" name="specialRequests" value={formData.specialRequests} onChange={handleInputChange} className="mt-2 w-full min-h-[100px] px-3 py-2 border border-input bg-background rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2" placeholder="Any dietary restrictions, celebrations, or special accommodations..." />
             </div>
 
             {/* Submit Button */}
@@ -202,8 +132,6 @@ const ReservationSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ReservationSection;
