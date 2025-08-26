@@ -8,6 +8,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import FloatingNav from "@/components/FloatingNav";
 import CartSheet from "@/components/CartSheet";
+import BranchSelector from "@/components/BranchSelector";
 import { ShoppingCart } from "lucide-react";
 
 interface CartItem {
@@ -15,6 +16,16 @@ interface CartItem {
   name: string;
   price: number;
   quantity: number;
+}
+
+interface Branch {
+  id: number;
+  name: string;
+  address: string;
+  phone: string;
+  hours: string;
+  coordinates: { lat: number; lng: number };
+  deliveryTime: string;
 }
 
 interface MenuItem {
@@ -31,6 +42,7 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState('home');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
 
   const addToCart = (item: MenuItem, quantity: number) => {
     setCartItems(prev => {
@@ -102,9 +114,17 @@ const Index = () => {
         <HeroSection onOrderNow={() => scrollToSection('menu')} />
       </div>
 
+      {/* Branch Selection */}
+      <div id="branches">
+        <BranchSelector 
+          selectedBranch={selectedBranch}
+          onBranchSelect={setSelectedBranch}
+        />
+      </div>
+
       {/* Menu Section */}
       <div id="menu">
-        <MenuSection onAddToCart={addToCart} />
+        <MenuSection onAddToCart={addToCart} selectedBranch={selectedBranch} />
       </div>
 
       {/* About Section */}

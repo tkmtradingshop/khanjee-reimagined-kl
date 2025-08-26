@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus, Minus, Star } from "lucide-react";
+import { Plus, Minus, Star, MapPin } from "lucide-react";
 
 // Import dish images
 import muttonLahoriKarahi from "@/assets/dishes/mutton-lahori-karahi.jpg";
@@ -208,7 +208,22 @@ const categories = [
   { id: 'bbq', name: 'BBQ Grill', icon: '🔥' },
 ];
 
-const MenuSection = ({ onAddToCart }: { onAddToCart: (item: MenuItem, quantity: number) => void }) => {
+interface Branch {
+  id: number;
+  name: string;
+  address: string;
+  phone: string;
+  hours: string;
+  coordinates: { lat: number; lng: number };
+  deliveryTime: string;
+}
+
+interface MenuSectionProps {
+  onAddToCart: (item: MenuItem, quantity: number) => void;
+  selectedBranch: Branch | null;
+}
+
+const MenuSection = ({ onAddToCart, selectedBranch }: MenuSectionProps) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
 
@@ -242,6 +257,24 @@ const MenuSection = ({ onAddToCart }: { onAddToCart: (item: MenuItem, quantity: 
     </div>
   );
 
+  // Show branch selection message if no branch is selected
+  if (!selectedBranch) {
+    return (
+      <section id="menu" className="py-16 bg-gradient-to-b from-background to-accent/5">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Select a Branch to View Menu
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Please choose your nearest branch above to see our menu and place orders
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-6">
@@ -252,6 +285,10 @@ const MenuSection = ({ onAddToCart }: { onAddToCart: (item: MenuItem, quantity: 
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Authentic Pakistani flavors crafted with traditional recipes and premium ingredients
           </p>
+          <div className="mt-4 flex items-center justify-center text-sm text-muted-foreground">
+            <MapPin className="w-4 h-4 mr-1" />
+            Ordering from: <span className="font-medium text-primary ml-1">{selectedBranch.name}</span>
+          </div>
         </div>
 
         {/* Category Filter */}
