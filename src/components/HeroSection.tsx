@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, MapPin, Clock, Star, Users, Award } from "lucide-react";
-import heroBiryaniPremium from "@/assets/hero-mutton-biryani-saffron.jpg";
+import heroBiryaniPremium from "@/assets/hero-fish-biryani-royal.jpg";
 import heroBBQPremium from "@/assets/hero-mixed-bbq-sizzling.jpg";
-import heroChapliKebab from "@/assets/hero-chicken-karahi-premium.jpg";
+import heroChapliKebab from "@/assets/hero-butter-chicken-deluxe.jpg";
 
 const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
   const heroImages = [
     {
       src: heroBiryaniPremium,
-      title: "Saffron Mutton Biryani",
-      subtitle: "Golden basmati rice layered with tender mutton & aromatic saffron",
-      stats: "🏆 Customer's #1 Choice • 🌟 Premium Saffron",
+      title: "Royal Fish Biryani",
+      subtitle: "Premium fish tikka layered with golden saffron basmati rice",
+      stats: "🐟 Ocean Fresh • 👑 Royal Recipe",
     },
     {
       src: heroBBQPremium,
@@ -21,9 +21,9 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
     },
     {
       src: heroChapliKebab,
-      title: "Chicken Karahi",
-      subtitle: "Traditional copper wok cooking with rich tomato curry & spices",
-      stats: "🍛 Most Authentic • 🌶️ Perfect Heat Level",
+      title: "Butter Chicken Deluxe",
+      subtitle: "Creamy tomato curry with tender chicken in rich aromatic sauce",
+      stats: "🧈 Silky Smooth • ⭐ Customer Favorite",
     },
   ];
 
