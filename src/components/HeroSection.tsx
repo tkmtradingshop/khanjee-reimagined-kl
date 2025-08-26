@@ -64,16 +64,16 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         {/* Enhanced Stats Bar */}
         <div className="mb-6 flex flex-wrap justify-center gap-4 animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-green-500 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-bold border-2 border-emerald-300 shadow-xl shadow-emerald-500/30 hover:scale-105 transition-transform">
-            <div className="w-3 h-3 bg-white rounded-full animate-pulse shadow-lg"></div>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-slate-700/80 to-stone-700/80 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-bold border-2 border-slate-300/40 shadow-xl shadow-slate-500/20 hover:scale-105 transition-transform">
+            <div className="w-3 h-3 bg-brass-gold/80 rounded-full animate-pulse shadow-lg"></div>
             <Users size={16} />
             Serving 500+ families daily
           </div>
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-teal-500 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-bold border-2 border-green-300 shadow-xl shadow-green-500/30 hover:scale-105 transition-transform">
-            <Star size={16} className="fill-white" />
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-stone-700/80 to-zinc-700/80 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-bold border-2 border-stone-300/40 shadow-xl shadow-stone-500/20 hover:scale-105 transition-transform">
+            <Star size={16} className="fill-brass-gold/80" />
             4.9 ★ Authentic Taste
           </div>
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-500 to-emerald-500 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-bold border-2 border-teal-300 shadow-xl shadow-teal-500/30 hover:scale-105 transition-transform">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-zinc-700/80 to-slate-700/80 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-bold border-2 border-zinc-300/40 shadow-xl shadow-zinc-500/20 hover:scale-105 transition-transform">
             <Award size={16} />
             KL's Most Authentic Pakistani
           </div>
@@ -81,8 +81,8 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
 
         {/* Highlighted Restaurant Badge */}
         <div className="mb-8 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-green-400 rounded-full blur-xl opacity-50 animate-pulse"></div>
-          <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-green-600 backdrop-blur-md rounded-full px-8 py-4 text-white text-base font-bold border-2 border-emerald-300 shadow-2xl shadow-emerald-500/40">
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-400/60 to-zinc-400/60 rounded-full blur-xl opacity-40 animate-pulse"></div>
+          <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-slate-700/90 to-stone-700/90 backdrop-blur-md rounded-full px-8 py-4 text-white text-base font-bold border-2 border-stone-300/40 shadow-2xl shadow-stone-500/30">
             <div className="w-3 h-3 bg-brass-gold rounded-full animate-bounce shadow-lg"></div>
             <MapPin size={18} />
             <span className="text-shadow">Kuala Lumpur • Authentic Pakistani Cuisine Since 2015</span>
