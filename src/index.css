@@ -2,41 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Khanjee Restaurant Design System - Pakistani Premium Dining */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Pakistani Restaurant Color Palette */
+    --background: 42 25% 96%;
+    --foreground: 160 30% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 42 25% 98%;
+    --card-foreground: 160 30% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 42 25% 98%;
+    --popover-foreground: 160 30% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Deep Emerald Green - Premium Pakistani Restaurant */
+    --primary: 160 45% 20%;
+    --primary-foreground: 42 25% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Warm Ivory Secondary */
+    --secondary: 42 20% 92%;
+    --secondary-foreground: 160 30% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Tones */
+    --muted: 42 15% 88%;
+    --muted-foreground: 160 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Brass Gold Accent */
+    --accent: 45 85% 55%;
+    --accent-foreground: 160 30% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 42 25% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 42 15% 85%;
+    --input: 42 15% 85%;
+    --ring: 160 45% 20%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom Restaurant Colors */
+    --emerald-deep: 160 45% 20%;
+    --emerald-light: 160 35% 35%;
+    --ivory-warm: 42 25% 96%;
+    --ivory-soft: 42 20% 92%;
+    --brass-gold: 45 85% 55%;
+    --brass-light: 45 75% 65%;
+    --copper-accent: 25 65% 45%;
+    --spice-red: 15 85% 55%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--emerald-deep)), hsl(var(--emerald-light)));
+    --gradient-brass: linear-gradient(135deg, hsl(var(--brass-gold)), hsl(var(--brass-light)));
+    --gradient-warm: linear-gradient(180deg, hsl(var(--ivory-warm)), hsl(var(--ivory-soft)));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(var(--emerald-deep) / 0.1);
+    --shadow-brass: 0 8px 30px hsl(var(--brass-gold) / 0.2);
+    --shadow-elegant: 0 10px 40px hsl(var(--emerald-deep) / 0.15);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +83,44 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 160 15% 8%;
+    --foreground: 42 25% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 160 15% 10%;
+    --card-foreground: 42 25% 96%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 160 15% 10%;
+    --popover-foreground: 42 25% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 42 25% 96%;
+    --primary-foreground: 160 30% 15%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 160 10% 15%;
+    --secondary-foreground: 42 25% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 160 10% 15%;
+    --muted-foreground: 42 15% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 45 85% 55%;
+    --accent-foreground: 160 30% 15%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 42 25% 96%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 160 10% 20%;
+    --input: 160 10% 20%;
+    --ring: 42 25% 96%;
+
+    /* Dark mode restaurant colors */
+    --emerald-deep: 160 45% 25%;
+    --emerald-light: 160 35% 40%;
+    --ivory-warm: 42 25% 96%;
+    --ivory-soft: 42 20% 92%;
+    --brass-gold: 45 85% 60%;
+    --brass-light: 45 75% 70%;
+    --copper-accent: 25 65% 50%;
+    --spice-red: 15 85% 60%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -101,5 +139,96 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Hero Section */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .brass-gradient {
+    background: var(--gradient-brass);
+  }
+  
+  /* Cultural Pattern Overlay */
+  .pattern-overlay {
+    position: relative;
+  }
+  
+  .pattern-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 25% 50%, hsl(var(--brass-gold) / 0.05) 1px, transparent 1px),
+      radial-gradient(circle at 75% 50%, hsl(var(--copper-accent) / 0.03) 1px, transparent 1px);
+    background-size: 40px 40px, 60px 60px;
+    pointer-events: none;
+  }
+  
+  /* Premium Card Styles */
+  .card-premium {
+    @apply bg-card border border-border/50 rounded-xl;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+  }
+  
+  .card-premium:hover {
+    box-shadow: var(--shadow-elegant);
+    transform: translateY(-2px);
+  }
+  
+  /* Cultural Touch Elements */
+  .cultural-accent {
+    position: relative;
+  }
+  
+  .cultural-accent::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--gradient-brass);
+    border-radius: 1px;
+  }
+  
+  /* Floating Animation */
+  .float-gentle {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* Premium Button Hover Effects */
+  .btn-premium {
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-premium:hover::before {
+    left: 100%;
   }
 }

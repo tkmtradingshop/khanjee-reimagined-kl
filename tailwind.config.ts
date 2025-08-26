@@ -52,6 +52,25 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Pakistani Restaurant Custom Colors
+				emerald: {
+					deep: 'hsl(var(--emerald-deep))',
+					light: 'hsl(var(--emerald-light))'
+				},
+				ivory: {
+					warm: 'hsl(var(--ivory-warm))',
+					soft: 'hsl(var(--ivory-soft))'
+				},
+				brass: {
+					gold: 'hsl(var(--brass-gold))',
+					light: 'hsl(var(--brass-light))'
+				},
+				copper: {
+					accent: 'hsl(var(--copper-accent))'
+				},
+				spice: {
+					red: 'hsl(var(--spice-red))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
