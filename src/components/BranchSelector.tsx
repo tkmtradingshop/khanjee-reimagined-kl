@@ -56,10 +56,10 @@ const BranchSelector = ({ selectedBranch, onBranchSelect }: BranchSelectorProps)
       <div className="container mx-auto px-6">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-foreground mb-2">
-            Click Your Nearest Branch
+            Choose Your Nearest Branch
           </h2>
           <p className="text-muted-foreground">
-            To see the complete menu
+            Select a location to place your order
           </p>
         </div>
 
