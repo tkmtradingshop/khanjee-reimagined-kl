@@ -1,29 +1,29 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, MapPin, Clock, Star, Users, Award } from "lucide-react";
-import heroBiryaniPremium from "@/assets/hero-fish-biryani-royal.jpg";
-import heroBBQPremium from "@/assets/hero-mixed-bbq-sizzling.jpg";
-import heroChapliKebab from "@/assets/hero-butter-chicken-deluxe.jpg";
+import heroBiryaniNature from "@/assets/hero-biryani-nature.jpg";
+import heroBBQOutdoor from "@/assets/hero-bbq-outdoor.jpg";
+import heroCurryGarden from "@/assets/hero-curry-garden.jpg";
 
 const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
   const heroImages = [
     {
-      src: heroBiryaniPremium,
-      title: "Royal Fish Biryani",
-      subtitle: "Premium fish tikka layered with golden saffron basmati rice",
-      stats: "🐟 Ocean Fresh • 👑 Royal Recipe",
+      src: heroBiryaniNature,
+      title: "Garden Fresh Biryani",
+      subtitle: "Aromatic saffron basmati rice layered with tender meat in nature's embrace",
+      stats: "🌿 Nature Fresh • 🍛 Traditional Recipe",
     },
     {
-      src: heroBBQPremium,
-      title: "Sizzling BBQ Platter",
-      subtitle: "Mixed grill perfection with seekh kebabs, tikka & beef boti",
-      stats: "🔥 Chef's Signature • 🥩 Fresh from Tandoor",
+      src: heroBBQOutdoor,
+      title: "Outdoor BBQ Feast",
+      subtitle: "Sizzling mixed grill with seekh kebabs, tikka & beef boti fresh from the fire",
+      stats: "🔥 Fire Grilled • 🥩 Open Air BBQ",
     },
     {
-      src: heroChapliKebab,
-      title: "Butter Chicken Deluxe",
-      subtitle: "Creamy tomato curry with tender chicken in rich aromatic sauce",
-      stats: "🧈 Silky Smooth • ⭐ Customer Favorite",
+      src: heroCurryGarden,
+      title: "Garden Curry Delight",
+      subtitle: "Rich creamy butter chicken served in peaceful garden ambiance",
+      stats: "🌸 Garden Fresh • 🧈 Farm to Table",
     },
   ];
 
