@@ -14,6 +14,15 @@ import MinimalSignup from "@/components/MinimalSignup";
 import LiveOrderNotifications from "@/components/LiveOrderNotifications";
 import DeliveryProgressBar from "@/components/DeliveryProgressBar";
 import RecommendedDishes from "@/components/RecommendedDishes";
+import CheckoutModal from "@/components/CheckoutModal";
+import OrderConfirmation from "@/components/OrderConfirmation";
+import { 
+  UrgencyBanner, 
+  SocialProofBanner, 
+  TrustBadges, 
+  ReviewsPreview,
+  FreeDeliveryProgress 
+} from "@/components/CROEnhancements";
 import { ShoppingCart } from "lucide-react";
 
 interface CartItem {
@@ -48,6 +57,9 @@ const Index = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [isOrderConfirmOpen, setIsOrderConfirmOpen] = useState(false);
+  const [currentOrder, setCurrentOrder] = useState<any>(null);
 
   const addToCart = (item: MenuItem, quantity: number) => {
     setCartItems(prev => {
@@ -85,8 +97,23 @@ const Index = () => {
   };
 
   const handleCheckout = () => {
-    // Placeholder for checkout logic
-    alert('Checkout functionality coming soon! For now, please call us at +60 12-345 6789 to complete your order.');
+    if (cartItems.length === 0) {
+      alert('Your cart is empty. Please add items before checkout.');
+      return;
+    }
+    if (!selectedBranch) {
+      alert('Please select a branch before checkout.');
+      return;
+    }
+    setIsCartOpen(false);
+    setIsCheckoutOpen(true);
+  };
+
+  const handleOrderComplete = (orderData: any) => {
+    setCurrentOrder(orderData);
+    setIsCheckoutOpen(false);
+    setIsOrderConfirmOpen(true);
+    setCartItems([]); // Clear cart after successful order
   };
 
   const scrollToSection = (section: string) => {
@@ -115,10 +142,16 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* CRO Enhancement - Urgency Banner */}
+      <UrgencyBanner />
+
       {/* Hero Section */}
       <div id="home">
         <HeroSection onOrderNow={() => scrollToSection('menu')} />
       </div>
+
+      {/* Trust Badges */}
+      <TrustBadges />
 
       {/* Branch Selection Message */}
       {!selectedBranch && (
@@ -144,6 +177,18 @@ const Index = () => {
         />
       </div>
 
+      {/* Social Proof Banner */}
+      <div className="container mx-auto px-6">
+        <SocialProofBanner />
+        
+        {/* Free Delivery Progress */}
+        {cartItems.length > 0 && (
+          <div className="mb-6">
+            <FreeDeliveryProgress currentAmount={cartTotal} />
+          </div>
+        )}
+      </div>
+
       {/* Menu Section */}
       <div id="menu">
         <MenuSection onAddToCart={addToCart} selectedBranch={selectedBranch} />
@@ -151,6 +196,13 @@ const Index = () => {
 
       {/* Recommended Dishes */}
       <RecommendedDishes onAddToCart={addToCart} />
+
+      {/* Customer Reviews */}
+      <div className="py-16 bg-gradient-to-b from-background to-accent/5">
+        <div className="container mx-auto px-6">
+          <ReviewsPreview />
+        </div>
+      </div>
 
       {/* About Section */}
       <div id="about">
@@ -203,6 +255,22 @@ const Index = () => {
         onUpdateQuantity={updateCartQuantity}
         onRemoveItem={removeFromCart}
         onCheckout={handleCheckout}
+      />
+
+      {/* Checkout Modal */}
+      <CheckoutModal
+        isOpen={isCheckoutOpen}
+        onClose={() => setIsCheckoutOpen(false)}
+        cartItems={cartItems}
+        selectedBranch={selectedBranch}
+        onOrderComplete={handleOrderComplete}
+      />
+
+      {/* Order Confirmation */}
+      <OrderConfirmation
+        isOpen={isOrderConfirmOpen}
+        onClose={() => setIsOrderConfirmOpen(false)}
+        orderData={currentOrder}
       />
 
       {/* Floating Navigation */}

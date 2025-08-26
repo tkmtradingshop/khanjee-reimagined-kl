@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus, Minus, Star, MapPin } from "lucide-react";
+import { ScarcityIndicator, PopularityBadge } from "@/components/CROEnhancements";
 
 // Import dish images
 import muttonLahoriKarahi from "@/assets/dishes/mutton-lahori-karahi.jpg";
@@ -28,6 +29,9 @@ interface MenuItem {
   rating: number;
   spiceLevel: number;
   image?: string;
+  isPopular?: boolean;
+  isBestSeller?: boolean;
+  remainingStock?: number;
 }
 
 // Real menu data from Khanjee app - Complete Menu
@@ -41,7 +45,9 @@ const menuData: MenuItem[] = [
     category: "signature", 
     rating: 4.9, 
     spiceLevel: 3,
-    image: muttonLahoriKarahi
+    image: muttonLahoriKarahi,
+    isBestSeller: true,
+    remainingStock: 12
   },
   { 
     id: 2, 
@@ -126,7 +132,9 @@ const menuData: MenuItem[] = [
     category: "signature", 
     rating: 4.8, 
     spiceLevel: 3,
-    image: chickenKarahi
+    image: chickenKarahi,
+    isPopular: true,
+    remainingStock: 15
   },
   { 
     id: 11, 
@@ -299,7 +307,9 @@ const menuData: MenuItem[] = [
     category: "rice", 
     rating: 4.9, 
     spiceLevel: 2,
-    image: chickenBiryani
+    image: chickenBiryani,
+    isBestSeller: true,
+    remainingStock: 8
   },
   { 
     id: 29, 
@@ -548,7 +558,17 @@ const MenuSection = ({ onAddToCart, selectedBranch }: MenuSectionProps) => {
         {/* Menu Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredMenu.map(item => (
-            <div key={item.id} className="card-premium overflow-hidden group">
+            <div key={item.id} className="card-premium overflow-hidden group relative">
+              {/* CRO Enhancements - Badges */}
+              <ScarcityIndicator 
+                dishName={item.name} 
+                remaining={item.remainingStock || 10} 
+              />
+              <PopularityBadge 
+                isPopular={item.isPopular} 
+                isBestSeller={item.isBestSeller} 
+              />
+              
               {/* Dish Image */}
               {item.image && (
                 <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
