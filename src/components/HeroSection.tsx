@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, MapPin, Clock, Star, Users, Award } from "lucide-react";
 import heroBiryaniPremium from "@/assets/hero-biryani-premium.jpg";
 import heroBBQPremium from "@/assets/hero-bbq-premium.jpg";
-import heroKhanjeeInterior from "@/assets/hero-khanjee-interior.jpg";
+import heroChapliKebab from "@/assets/hero-chapli-kebab.jpg";
 
 const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
   const heroImages = [
@@ -20,10 +20,10 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
       stats: "🔥 Chef's Special • 👨‍🍳 Award Winning",
     },
     {
-      src: heroKhanjeeInterior,
-      title: "Authentic Ambiance",
-      subtitle: "Premium Pakistani hospitality in the heart of KL",
-      stats: "🏛️ Traditional Design • ✨ Modern Luxury",
+      src: heroChapliKebab,
+      title: "Chapli Kebab",
+      subtitle: "Authentic Peshawar-style flat kebabs with traditional spices",
+      stats: "🥩 House Specialty • 🌶️ Perfect Spice Level",
     },
   ];
 
