@@ -1,29 +1,29 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, MapPin, Clock, Star, Users, Award } from "lucide-react";
-import heroBiryaniPremium from "@/assets/hero-biryani-premium.jpg";
-import heroBBQPremium from "@/assets/hero-bbq-premium.jpg";
-import heroChapliKebab from "@/assets/hero-chapli-kebab.jpg";
+import heroBiryaniPremium from "@/assets/hero-fish-biryani-royal.jpg";
+import heroBBQPremium from "@/assets/hero-mixed-bbq-sizzling.jpg";
+import heroChapliKebab from "@/assets/hero-butter-chicken-deluxe.jpg";
 
 const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
   const heroImages = [
     {
       src: heroBiryaniPremium,
-      title: "Signature Biryani",
-      subtitle: "Aromatic saffron rice with premium cuts",
-      stats: "⭐ 4.9 Rating • 🍽️ Most Ordered",
+      title: "Royal Fish Biryani",
+      subtitle: "Premium fish tikka layered with golden saffron basmati rice",
+      stats: "🐟 Ocean Fresh • 👑 Royal Recipe",
     },
     {
       src: heroBBQPremium,
-      title: "Artisan BBQ",
-      subtitle: "Charcoal-grilled perfection with ancient spices",
-      stats: "🔥 Chef's Special • 👨‍🍳 Award Winning",
+      title: "Sizzling BBQ Platter",
+      subtitle: "Mixed grill perfection with seekh kebabs, tikka & beef boti",
+      stats: "🔥 Chef's Signature • 🥩 Fresh from Tandoor",
     },
     {
       src: heroChapliKebab,
-      title: "Chapli Kebab",
-      subtitle: "Authentic Peshawar-style flat kebabs with traditional spices",
-      stats: "🥩 House Specialty • 🌶️ Perfect Spice Level",
+      title: "Butter Chicken Deluxe",
+      subtitle: "Creamy tomato curry with tender chicken in rich aromatic sauce",
+      stats: "🧈 Silky Smooth • ⭐ Customer Favorite",
     },
   ];
 

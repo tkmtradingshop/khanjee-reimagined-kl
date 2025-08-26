@@ -1,277 +1,339 @@
 import { Button } from "@/components/ui/button";
-import { Award, Heart, Users, Clock, Star, ChefHat, MapPin } from "lucide-react";
-const AboutSection = () => {
-  const achievements = [{
-    icon: Award,
-    title: "Award Winning",
-    description: "Best Pakistani Restaurant KL 2023",
-    highlight: "Gold Medal"
-  }, {
-    icon: Heart,
-    title: "Made with Love",
-    description: "Traditional family recipes passed down 4 generations",
-    highlight: "Since 1952"
-  }, {
-    icon: Users,
-    title: "Community Favorite", 
-    description: "Over 50,000+ happy customers served",
-    highlight: "4.9★ Rating"
-  }, {
-    icon: Clock,
-    title: "Fresh Daily",
-    description: "Ingredients sourced fresh every morning",
-    highlight: "100% Fresh"
-  }];
+import { Award, Heart, Users, Clock, Star, MapPin, Calendar, TrendingUp, Quote, Play, ChefHat } from "lucide-react";
+import chefFamilyPortrait from "@/assets/chef-family-portrait.jpg";
+import heritageKitchen from "@/assets/heritage-kitchen.jpg";
 
-  const testimonials = [
+const AboutSection = () => {
+  const achievements = [
     {
-      text: "The most authentic Pakistani flavors I've tasted outside Pakistan!",
-      author: "Ahmad Hassan",
-      location: "Kuala Lumpur"
+      icon: Award,
+      number: "#1",
+      title: "Pakistani Restaurant",
+      description: "In Kuala Lumpur for 3 consecutive years",
+      color: "text-brass-gold"
     },
     {
-      text: "Every bite transports me back to my grandmother's kitchen in Lahore.",
-      author: "Fatima Ali",
-      location: "Petaling Jaya"
+      icon: Users,
+      number: "50K+",
+      title: "Happy Families Served",
+      description: "Building community one meal at a time",
+      color: "text-emerald-light"
+    },
+    {
+      icon: Clock,
+      number: "65+",
+      title: "Years of Combined Experience",
+      description: "Three generations of culinary mastery",
+      color: "text-spice-red"
+    },
+    {
+      icon: Star,
+      number: "4.9★",
+      title: "Customer Rating",
+      description: "Based on 2,347+ verified reviews",
+      color: "text-brass-gold"
     }
   ];
-  return <section className="py-20 relative overflow-hidden">
-      {/* Colorful Background with Patterns */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-light via-ivory-warm to-brass-light opacity-90"></div>
-      <div className="absolute inset-0 pattern-overlay opacity-30"></div>
-      <div className="absolute top-10 left-10 w-32 h-32 bg-brass-accent/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-10 right-10 w-40 h-40 bg-emerald-accent/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Enhanced Story Section */}
-          <div className="space-y-8">
-            <div className="relative">
-              {/* Decorative Elements */}
-              <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-br from-brass-accent to-copper-accent rounded-full opacity-60 animate-float"></div>
-              <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-gradient-to-br from-emerald-accent to-emerald-deep rounded-full opacity-40 animate-float delay-500"></div>
-              
-              <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-gradient-to-br from-emerald-deep to-emerald-accent rounded-full shadow-glow">
-                  <ChefHat className="text-white" size={36} />
-                </div>
-                <div>
-                  <h2 className="text-5xl font-bold bg-gradient-to-r from-emerald-deep via-brass-accent to-copper-accent bg-clip-text text-transparent">
-                    Our Story
-                  </h2>
-                  <div className="w-24 h-1 bg-gradient-to-r from-brass-accent to-copper-accent rounded-full mt-2"></div>
-                </div>
-              </div>
-              
-              <div className="space-y-8 text-lg leading-relaxed">
-                {/* Love Story Opening */}
-                <div className="card-premium p-6 bg-gradient-to-br from-white/80 to-ivory-soft/80 border border-brass-accent/30 shadow-glow">
-                  <div className="flex items-start gap-4">
-                    <Heart className="text-copper-accent mt-1 flex-shrink-0" size={24} fill="currentColor" />
-                    <div>
-                      <p className="font-bold text-emerald-deep text-xl mb-3">
-                        "A Love Letter to Pakistani Cuisine"
-                      </p>
-                      <p className="text-foreground">
-                        In the heart of bustling Lahore, 1952, our story began not just with recipes, 
-                        but with <span className="font-semibold text-copper-accent">pure love</span> - love for tradition, 
-                        love for family, and an unshakeable love for the art of Pakistani cooking.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Heritage Story */}
-                <div className="relative pl-8 border-l-4 border-gradient-to-b from-brass-accent via-emerald-accent to-copper-accent">
-                  <div className="absolute -left-3 top-0 w-6 h-6 bg-brass-accent rounded-full"></div>
-                  <div className="absolute -left-2 top-8 w-4 h-4 bg-emerald-accent rounded-full"></div>
-                  <div className="absolute -left-2 top-16 w-3 h-3 bg-copper-accent rounded-full"></div>
-                  
-                  <p className="font-medium text-emerald-deep mb-3 text-xl">
-                    "Four generations of secret recipes, one passionate dream..."
-                  </p>
-                  <p className="text-foreground">
-                    Bibi Khadija's weathered hands taught us that <span className="font-bold text-brass-accent">every grain of rice has a soul</span>, 
-                    every spice blend tells a story of monsoons and harvests, of celebration and comfort. 
-                    Today, we honor her legacy by bringing those same soul-stirring flavors to Malaysia.
-                  </p>
-                </div>
-                
-                {/* Passionate Promise */}
-                <div className="bg-gradient-to-r from-emerald-deep/10 via-brass-accent/10 to-copper-accent/10 p-6 rounded-2xl border-2 border-gradient-to-r from-emerald-accent/20 via-brass-accent/20 to-copper-accent/20 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-accent/5 via-transparent to-brass-accent/5"></div>
-                  <div className="relative z-10">
-                    <p className="text-xl font-bold text-emerald-deep mb-3">
-                      💝 Our Promise to You
-                    </p>
-                    <p className="italic text-foreground leading-relaxed">
-                      "When you dine with us, you're not just eating - you're experiencing decades of 
-                      perfected artistry, tasting the <span className="font-bold text-copper-accent">warmth of Pakistani hospitality</span>, 
-                      and becoming part of our extended family story."
-                    </p>
-                    <div className="flex items-center gap-3 mt-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-brass-accent to-copper-accent rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        MT
-                      </div>
-                      <div>
-                        <p className="text-sm text-emerald-deep font-bold">Chef Muhammad Tariq</p>
-                        <p className="text-xs text-muted-foreground">Head Chef & Guardian of Traditions</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 mt-10">
-                <Button variant="hero" size="lg" className="flex items-center gap-2 shadow-glow hover:shadow-glow-intense transition-all duration-300">
-                  <ChefHat size={20} />
-                  Meet Our Chef
-                </Button>
-                <Button variant="outline" size="lg" className="flex items-center gap-2 border-2 border-brass-accent text-brass-accent hover:bg-brass-accent hover:text-white transition-all duration-300">
-                  <MapPin size={20} />
-                  Our Journey
-                </Button>
-              </div>
-            </div>
-          </div>
 
-          {/* Colorful Achievements Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {achievements.map((item, index) => {
-              const gradients = [
-                'from-emerald-deep to-emerald-accent',
-                'from-brass-accent to-copper-accent', 
-                'from-copper-accent to-brass-deep',
-                'from-emerald-accent to-brass-accent'
-              ];
-              const bgGradients = [
-                'from-emerald-deep/5 via-emerald-accent/10 to-emerald-light/15',
-                'from-brass-accent/5 via-copper-accent/10 to-brass-light/15',
-                'from-copper-accent/5 via-brass-accent/10 to-copper-light/15', 
-                'from-emerald-accent/5 via-brass-accent/10 to-emerald-light/15'
-              ];
-              
-              return (
-                <div key={index} className={`card-premium p-8 text-center group hover:shadow-glow hover:-translate-y-2 transition-all duration-500 border-2 border-gradient-to-r ${gradients[index]} relative overflow-hidden bg-gradient-to-br ${bgGradients[index]}`}>
-                  {/* Animated Background Elements */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br opacity-10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700"></div>
-                  
-                  <div className={`w-20 h-20 bg-gradient-to-br ${gradients[index]} rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-glow group-hover:scale-125 transition-all duration-500 shadow-lg`}>
-                    <item.icon className="text-white" size={32} />
-                  </div>
-                  
-                  <div className="relative z-10">
-                    <div className={`absolute -top-3 -right-3 bg-gradient-to-r ${gradients[index]} text-white text-sm px-3 py-2 rounded-full font-bold shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform duration-300`}>
-                      {item.highlight}
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold text-emerald-deep mb-3 group-hover:text-emerald-accent transition-colors duration-300">
-                      {item.title}
-                    </h3>
-                    <p className="text-foreground leading-relaxed font-medium">
-                      {item.description}
-                    </p>
-                  </div>
-                  
-                  {/* Decorative Elements */}
-                  <div className="absolute bottom-2 left-2 w-8 h-8 bg-gradient-to-br opacity-20 rounded-full group-hover:animate-bounce"></div>
-                  <div className="absolute top-2 left-2 w-6 h-6 bg-gradient-to-br opacity-15 rounded-full group-hover:animate-pulse"></div>
-                </div>
-              );
-            })}
+  const storyHighlights = [
+    {
+      year: "1958",
+      title: "The Beginning",
+      description: "Grandmother Fatima's recipes in Lahore",
+      icon: "👵🏻"
+    },
+    {
+      year: "1995",
+      title: "Master Training",
+      description: "Chef Amjad trained in Pakistan's finest hotels",
+      icon: "🏨"
+    },
+    {
+      year: "2015",
+      title: "Malaysian Dream",
+      description: "First Khanjee restaurant opens in KL",
+      icon: "🇲🇾"
+    },
+    {
+      year: "2024",
+      title: "Legacy Continues",
+      description: "3 locations, 50,000+ satisfied customers",
+      icon: "🏆"
+    }
+  ];
+
+  return (
+    <section className="relative py-20 bg-gradient-to-br from-emerald-deep/10 via-brass-gold/5 to-spice-red/10 overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 -right-20 w-60 h-60 bg-brass-gold/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 -left-32 w-80 h-80 bg-emerald-light/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Hero Story Section */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brass-gold/20 to-emerald-light/20 rounded-full px-6 py-2 mb-6">
+            <Heart className="w-5 h-5 text-spice-red animate-pulse" />
+            <span className="text-brass-gold font-semibold">Our Heritage Story</span>
           </div>
+          
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8 bg-gradient-to-r from-emerald-deep via-brass-gold to-spice-red bg-clip-text text-transparent">
+            Three Generations of Authentic Flavors
+          </h2>
+          
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            From our grandmother's kitchen in Lahore to Malaysia's heart - discover how passion, 
+            tradition, and love created KL's most beloved Pakistani restaurant.
+          </p>
         </div>
 
-        {/* Enhanced Customer Testimonials */}
-        <div className="mt-20 pt-16 border-t-4 border-gradient-to-r from-brass-accent via-emerald-accent to-copper-accent relative">
-          {/* Decorative Background */}
-          <div className="absolute inset-0 bg-gradient-to-t from-brass-light/10 via-transparent to-emerald-light/10 rounded-3xl"></div>
-          
-          <div className="text-center mb-12 relative z-10">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <Star className="text-brass-accent" size={32} fill="currentColor" />
-              <h3 className="text-4xl font-bold bg-gradient-to-r from-emerald-deep via-brass-accent to-copper-accent bg-clip-text text-transparent">
-                Hearts We've Touched
-              </h3>
-              <Star className="text-copper-accent" size={32} fill="currentColor" />
-            </div>
-            <p className="text-xl text-muted-foreground font-medium">
-              Authentic flavors that create <span className="text-emerald-deep font-bold">lasting memories</span> 💫
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
-            {testimonials.map((testimonial, index) => {
-              const cardGradients = [
-                'from-emerald-deep/5 via-emerald-accent/10 to-brass-accent/5',
-                'from-brass-accent/5 via-copper-accent/10 to-emerald-accent/5'
-              ];
-              const avatarGradients = [
-                'from-emerald-deep to-emerald-accent',
-                'from-brass-accent to-copper-accent'
-              ];
-              
-              return (
-                <div key={index} className={`card-premium p-8 relative overflow-hidden group hover:shadow-glow hover:-translate-y-3 transition-all duration-500 bg-gradient-to-br ${cardGradients[index]} border-2 border-gradient-to-r ${avatarGradients[index]}`}>
-                  {/* Floating Hearts */}
-                  <div className="absolute top-4 right-4 text-copper-accent/30 group-hover:text-copper-accent/60 transition-colors animate-pulse">
-                    <Heart size={24} fill="currentColor" />
-                  </div>
-                  <div className="absolute top-2 right-12 text-brass-accent/20 group-hover:text-brass-accent/40 transition-colors animate-pulse delay-300">
-                    <Heart size={16} fill="currentColor" />
-                  </div>
-                  
-                  {/* Quote Marks */}
-                  <div className="text-6xl text-emerald-deep/20 font-serif absolute top-2 left-4">"</div>
-                  
-                  <div className="space-y-6 relative z-10 mt-4">
-                    <p className="text-xl italic text-foreground leading-relaxed font-medium pl-8">
-                      {testimonial.text}
-                    </p>
-                    
-                    <div className="flex items-center gap-4">
-                      <div className={`w-14 h-14 bg-gradient-to-br ${avatarGradients[index]} rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        {testimonial.author.charAt(0)}
-                      </div>
-                      <div>
-                        <p className="font-bold text-emerald-deep text-lg">
-                          {testimonial.author}
-                        </p>
-                        <p className="text-sm text-muted-foreground font-medium">
-                          📍 {testimonial.location}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-1 justify-center pt-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={20} className="text-yellow-400 fill-current drop-shadow-md" />
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Decorative Elements */}
-                  <div className="absolute bottom-4 left-4 w-8 h-8 bg-brass-accent/20 rounded-full animate-bounce delay-1000"></div>
-                  <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-emerald-accent/10 rounded-full blur-sm group-hover:bg-emerald-accent/20 transition-colors duration-500"></div>
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+          {/* Story Content */}
+          <div className="space-y-8">
+            {/* Family Legacy */}
+            <div className="bg-card/90 backdrop-blur-sm rounded-2xl p-8 border border-border/50 shadow-elegant">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-spice-red to-brass-gold rounded-full flex items-center justify-center">
+                  <Quote className="w-8 h-8 text-white" />
                 </div>
-              );
-            })}
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground">A Mother's Promise</h3>
+                  <p className="text-muted-foreground">The story that started it all</p>
+                </div>
+              </div>
+              
+              <blockquote className="text-lg text-muted-foreground italic leading-relaxed border-l-4 border-brass-gold pl-6">
+                "My grandmother Fatima made me promise to never let our family recipes disappear. 
+                Today, every dish at Khanjee carries her love, her techniques, and her blessing. 
+                When you taste our food, you taste 65 years of Pakistani culinary heritage."
+              </blockquote>
+              
+              <div className="flex items-center gap-3 mt-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-deep to-emerald-light rounded-full flex items-center justify-center">
+                  <ChefHat className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Chef Amjad Khan</p>
+                  <p className="text-sm text-muted-foreground">Founder & Head Chef</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Why Choose Us */}
+            <div className="bg-gradient-to-r from-emerald-deep/10 to-brass-gold/10 rounded-2xl p-8 border border-emerald-light/20">
+              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+                <TrendingUp className="w-6 h-6 text-brass-gold" />
+                Why 50,000+ Malaysians Choose Khanjee
+              </h3>
+              
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-emerald-light rounded-full"></div>
+                  <span className="text-muted-foreground">Authentic family recipes since 1958</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-brass-gold rounded-full"></div>
+                  <span className="text-muted-foreground">Fresh spices imported from Pakistan</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-spice-red rounded-full"></div>
+                  <span className="text-muted-foreground">Halal certified & family-friendly</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-emerald-light rounded-full"></div>
+                  <span className="text-muted-foreground">No compromises on quality or taste</span>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Section */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button className="bg-gradient-to-r from-brass-gold to-brass-light text-emerald-deep hover:from-brass-light hover:to-brass-gold font-bold px-8 py-4 group">
+                <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                Watch Our Story (2 min)
+              </Button>
+              <Button variant="outline" className="border-emerald-deep text-emerald-deep hover:bg-emerald-deep hover:text-white px-8 py-4">
+                <MapPin className="w-5 h-5 mr-2" />
+                Visit Our Kitchen
+              </Button>
+            </div>
           </div>
-          
-          {/* Call to Action */}
-          <div className="text-center mt-12">
-            <p className="text-lg text-emerald-deep font-bold mb-4">
-              Ready to create your own unforgettable memory? 🌟
+
+          {/* Visual Story Timeline */}
+          <div className="space-y-8">
+            {/* Family Photos */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative group overflow-hidden rounded-2xl">
+                <img 
+                  src={chefFamilyPortrait} 
+                  alt="Chef Family" 
+                  className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-deep/80 to-transparent"></div>
+                <div className="absolute bottom-4 left-4">
+                  <p className="text-white font-semibold">Chef Amjad & Son</p>
+                  <p className="text-white/80 text-sm">Continuing the legacy</p>
+                </div>
+              </div>
+              
+              <div className="relative group overflow-hidden rounded-2xl">
+                <img 
+                  src={heritageKitchen} 
+                  alt="Heritage Kitchen" 
+                  className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brass-gold/80 to-transparent"></div>
+                <div className="absolute bottom-4 left-4">
+                  <p className="text-white font-semibold">1958 Kitchen</p>
+                  <p className="text-white/80 text-sm">Where it all began</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Timeline */}
+            <div className="bg-card/90 backdrop-blur-sm rounded-2xl p-8 border border-border/50 shadow-elegant">
+              <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+                <Calendar className="w-6 h-6 text-brass-gold" />
+                Our Journey
+              </h3>
+              
+              <div className="space-y-6">
+                {storyHighlights.map((item, index) => (
+                  <div key={index} className="flex items-center gap-4 group">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-brass-gold/20 to-emerald-light/20 rounded-full flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                      {item.icon}
+                    </div>
+                    <div className="border-l-2 border-brass-gold/30 pl-4 pb-2">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-sm font-bold text-brass-gold bg-brass-gold/10 px-2 py-1 rounded">
+                          {item.year}
+                        </span>
+                      </div>
+                      <h4 className="font-semibold text-foreground">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Enhanced Achievement Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {achievements.map((item, index) => (
+            <div 
+              key={index}
+              className="relative group bg-card/90 backdrop-blur-sm rounded-2xl p-6 text-center border border-border/50 shadow-elegant hover:shadow-glow transition-all duration-500 hover:scale-105"
+            >
+              {/* Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-brass-gold/20 via-emerald-light/20 to-spice-red/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative z-10">
+                <div className={`w-16 h-16 bg-gradient-to-br from-brass-gold/20 to-emerald-light/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <item.icon className={`${item.color}`} size={28} />
+                </div>
+                <div className={`text-3xl font-bold ${item.color} mb-2`}>
+                  {item.number}
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Customer Success Stories */}
+        <div className="bg-gradient-to-r from-emerald-deep/10 via-brass-gold/10 to-spice-red/10 rounded-3xl p-12 border border-brass-gold/20 backdrop-blur-sm">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-foreground mb-4">
+              Why Families Choose Khanjee
+            </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Real stories from customers who became part of our extended family
             </p>
-            <Button variant="hero" size="lg" className="shadow-glow hover:shadow-glow-intense">
-              Reserve Your Table Now
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-card/70 backdrop-blur-sm rounded-xl p-6 border border-border/30">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-brass-gold to-spice-red rounded-full flex items-center justify-center text-white font-bold">
+                  SF
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Sarah Family</p>
+                  <div className="flex">
+                    {[1,2,3,4,5].map((star) => (
+                      <Star key={star} className="w-4 h-4 fill-brass-gold text-brass-gold" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <blockquote className="text-muted-foreground italic">
+                "Been coming here for 5 years. My kids now ask for 'Uncle Amjad's biryani' 
+                every weekend. It's become our family tradition!"
+              </blockquote>
+            </div>
+
+            <div className="bg-card/70 backdrop-blur-sm rounded-xl p-6 border border-border/30">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-light to-brass-gold rounded-full flex items-center justify-center text-white font-bold">
+                  AA
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Ahmad Ali</p>
+                  <div className="flex">
+                    {[1,2,3,4,5].map((star) => (
+                      <Star key={star} className="w-4 h-4 fill-brass-gold text-brass-gold" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <blockquote className="text-muted-foreground italic">
+                "As a Pakistani living in Malaysia, Khanjee feels like home. 
+                The taste is exactly like my mother's cooking in Karachi."
+              </blockquote>
+            </div>
+
+            <div className="bg-card/70 backdrop-blur-sm rounded-xl p-6 border border-border/30">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-spice-red to-emerald-deep rounded-full flex items-center justify-center text-white font-bold">
+                  LF
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Local Foodie</p>
+                  <div className="flex">
+                    {[1,2,3,4,5].map((star) => (
+                      <Star key={star} className="w-4 h-4 fill-brass-gold text-brass-gold" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <blockquote className="text-muted-foreground italic">
+                "Never tried Pakistani food before Khanjee. Now I'm completely addicted! 
+                The BBQ platter changed my life."
+              </blockquote>
+            </div>
+          </div>
+
+          {/* Final CTA */}
+          <div className="text-center mt-12">
+            <div className="inline-flex items-center gap-2 bg-spice-red/10 text-spice-red px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <div className="w-2 h-2 bg-spice-red rounded-full animate-pulse"></div>
+              Join 50,000+ satisfied customers this year
+            </div>
+            <Button className="bg-gradient-to-r from-emerald-deep to-emerald-light hover:from-emerald-light hover:to-emerald-deep text-white font-bold px-12 py-4 text-lg">
+              Experience Our Heritage Today
             </Button>
           </div>
         </div>
-
-        {/* Chef Highlight */}
-        
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default AboutSection;
