@@ -41,31 +41,15 @@
 
     --radius: 0.75rem;
 
-    /* AI Pakistani Restaurant Colors */
-    --ai-black: 0 0% 8%;
-    --ai-grey-dark: 220 13% 18%;
-    --ai-grey-medium: 220 9% 46%;
-    --ai-grey-light: 220 14% 96%;
-    --ai-navy: 220 91% 15%;
-    --ai-navy-light: 220 91% 25%;
-    --ai-cyan: 180 100% 70%;
-    --ai-electric: 195 100% 50%;
-    
-    /* Legacy Colors for Compatibility */
-    --emerald-deep: 220 91% 15%;
-    --emerald-light: 220 91% 25%;
-    --ivory-warm: 220 14% 96%;
-    --ivory-soft: 220 9% 91%;
-    --brass-gold: 180 100% 70%;
-    --brass-light: 195 100% 75%;
-    --copper-accent: 220 13% 18%;
-    --spice-red: 195 100% 50%;
-    
-    /* AI Theme Gradients */
-    --gradient-ai: linear-gradient(135deg, hsl(var(--ai-black)), hsl(var(--ai-navy)));
-    --gradient-cyber: linear-gradient(135deg, hsl(var(--ai-navy)), hsl(var(--ai-navy-light)));
-    --gradient-neon: linear-gradient(135deg, hsl(var(--ai-cyan)), hsl(var(--ai-electric)));
-    --gradient-matrix: linear-gradient(180deg, hsl(var(--ai-grey-dark)), hsl(var(--ai-black)));
+    /* Custom Restaurant Colors */
+    --emerald-deep: 160 45% 20%;
+    --emerald-light: 160 35% 35%;
+    --ivory-warm: 42 25% 96%;
+    --ivory-soft: 42 20% 92%;
+    --brass-gold: 45 85% 55%;
+    --brass-light: 45 75% 65%;
+    --copper-accent: 25 65% 45%;
+    --spice-red: 15 85% 55%;
     
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(var(--emerald-deep)), hsl(var(--emerald-light)));
@@ -266,103 +250,5 @@
   
   .shadow-glow-intense {
     box-shadow: var(--shadow-glow-intense);
-  }
-  
-  /* AI Theme Components */
-  .ai-grid-pattern {
-    background-image: 
-      linear-gradient(hsl(var(--ai-cyan) / 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--ai-cyan) / 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: grid-scan 3s ease-in-out infinite;
-  }
-  
-  @keyframes grid-scan {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-  }
-  
-  .ai-data-stream {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .ai-data-stream::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      hsl(var(--ai-electric) / 0.1),
-      transparent
-    );
-    animation: data-flow 2s linear infinite;
-  }
-  
-  @keyframes data-flow {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
-  
-  .ai-hologram {
-    position: relative;
-    background: linear-gradient(
-      135deg,
-      hsl(var(--ai-navy) / 0.8),
-      hsl(var(--ai-grey-dark) / 0.6)
-    );
-    backdrop-filter: blur(10px);
-    border: 1px solid hsl(var(--ai-cyan) / 0.3);
-  }
-  
-  .ai-hologram::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      45deg,
-      transparent 49%,
-      hsl(var(--ai-cyan) / 0.1) 50%,
-      transparent 51%
-    );
-    background-size: 20px 20px;
-    animation: hologram-scan 4s ease-in-out infinite;
-  }
-  
-  @keyframes hologram-scan {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.8; }
-  }
-  
-  .ai-glow {
-    box-shadow: 
-      0 0 20px hsl(var(--ai-cyan) / 0.3),
-      0 0 40px hsl(var(--ai-electric) / 0.2),
-      inset 0 0 20px hsl(var(--ai-navy) / 0.1);
-  }
-  
-  .ai-text-glow {
-    text-shadow: 
-      0 0 10px hsl(var(--ai-cyan) / 0.8),
-      0 0 20px hsl(var(--ai-electric) / 0.4),
-      0 0 30px hsl(var(--ai-cyan) / 0.2);
-  }
-  
-  .neural-network {
-    background-image: 
-      radial-gradient(circle at 20% 20%, hsl(var(--ai-cyan) / 0.15) 2px, transparent 2px),
-      radial-gradient(circle at 80% 80%, hsl(var(--ai-electric) / 0.1) 1px, transparent 1px),
-      linear-gradient(hsl(var(--ai-cyan) / 0.05) 1px, transparent 1px);
-    background-size: 100px 100px, 60px 60px, 30px 30px;
-    animation: neural-pulse 3s ease-in-out infinite alternate;
-  }
-  
-  @keyframes neural-pulse {
-    0% { opacity: 0.4; }
-    100% { opacity: 0.8; }
   }
 }
