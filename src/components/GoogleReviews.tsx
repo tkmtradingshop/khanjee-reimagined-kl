@@ -57,6 +57,60 @@ const GoogleReviews = () => {
       text: "Love the ambiance and food quality. Staff is very friendly and accommodating. Will definitely come back!",
       date: "4 days ago",
       verified: true
+    },
+    {
+      id: 7,
+      name: "Rajesh Kumar",
+      avatar: "RK",
+      rating: 5,
+      text: "Outstanding lamb karahi and fresh tandoor bread! The flavors are incredible and prices are very reasonable. Family-friendly atmosphere.",
+      date: "6 days ago",
+      verified: true
+    },
+    {
+      id: 8,
+      name: "Fatima Sheikh",
+      avatar: "FS",
+      rating: 5,
+      text: "Finally found authentic Pakistani cuisine in KL! The chapli kebabs were amazing and the hospitality was wonderful. Highly recommend!",
+      date: "1 week ago",
+      verified: true
+    },
+    {
+      id: 9,
+      name: "David Lim",
+      avatar: "DL",
+      rating: 5,
+      text: "Tried their fish biryani on a friend's recommendation - absolutely blown away! Best Pakistani restaurant experience in Malaysia.",
+      date: "3 days ago",
+      verified: true
+    },
+    {
+      id: 10,
+      name: "Aisha Patel",
+      avatar: "AP",
+      rating: 5,
+      text: "The butter chicken here is phenomenal! Rich, creamy, and perfectly spiced. Staff went above and beyond to accommodate our large group.",
+      date: "2 weeks ago",
+      verified: true
+    },
+    {
+      id: 11,
+      name: "Omar Farooq",
+      avatar: "OF",
+      rating: 5,
+      text: "Authentic taste that brings back memories of Pakistan! The seekh kebabs and fresh naan were exceptional. Great value for money!",
+      date: "4 days ago",
+      verified: true
+    },
+    {
+      id: 12,
+      name: "Michelle Chong",
+      avatar: "MC",
+      rating: 5,
+      text: "Impressive variety and quality! Tried their chicken qorma and it was divine. Clean restaurant with excellent service. Will be back soon!",
+      date: "1 week ago",
+      verified: true
     }
   ];
 
