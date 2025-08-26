@@ -62,28 +62,31 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
 
       {/* Main Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        {/* Authentic Stats Bar */}
+        {/* Enhanced Stats Bar */}
         <div className="mb-6 flex flex-wrap justify-center gap-4 animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600/20 to-red-600/20 backdrop-blur-md rounded-full px-4 py-2 text-orange-100 text-xs font-medium border border-orange-400/30">
-            <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
-            <Users size={14} />
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-bold border-2 border-orange-300 shadow-xl shadow-orange-500/30 hover:scale-105 transition-transform">
+            <div className="w-3 h-3 bg-white rounded-full animate-pulse shadow-lg"></div>
+            <Users size={16} />
             Serving 500+ families daily
           </div>
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600/20 to-yellow-600/20 backdrop-blur-md rounded-full px-4 py-2 text-orange-100 text-xs font-medium border border-red-400/30">
-            <Star size={14} />
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-bold border-2 border-red-300 shadow-xl shadow-red-500/30 hover:scale-105 transition-transform">
+            <Star size={16} className="fill-white" />
             4.9 ★ Authentic Taste
           </div>
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-600/20 to-orange-600/20 backdrop-blur-md rounded-full px-4 py-2 text-orange-100 text-xs font-medium border border-yellow-400/30">
-            <Award size={14} />
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-orange-500 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-bold border-2 border-yellow-300 shadow-xl shadow-yellow-500/30 hover:scale-105 transition-transform">
+            <Award size={16} />
             KL's Most Authentic Pakistani
           </div>
         </div>
 
-        {/* Restaurant Badge */}
-        <div className="mb-8 inline-flex items-center gap-2 bg-gradient-to-r from-orange-600/30 to-red-600/30 backdrop-blur-md rounded-full px-6 py-3 text-orange-100 text-sm font-medium border border-orange-400/40">
-          <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-          <MapPin size={16} />
-          Kuala Lumpur • Authentic Pakistani Cuisine Since 2015
+        {/* Highlighted Restaurant Badge */}
+        <div className="mb-8 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 rounded-full blur-xl opacity-50 animate-pulse"></div>
+          <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-orange-600 to-red-600 backdrop-blur-md rounded-full px-8 py-4 text-white text-base font-bold border-2 border-orange-300 shadow-2xl shadow-orange-500/40">
+            <div className="w-3 h-3 bg-yellow-300 rounded-full animate-bounce shadow-lg"></div>
+            <MapPin size={18} />
+            <span className="text-shadow">Kuala Lumpur • Authentic Pakistani Cuisine Since 2015</span>
+          </div>
         </div>
 
         {/* Main Brand Heading */}
@@ -109,28 +112,43 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
           </div>
         </div>
 
-        {/* Authentic CTA Section */}
+        {/* Highlighted CTA Section */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 animate-fade-in-up-delayed">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button
-              variant="brass"
-              size="xl"
-              onClick={onOrderNow}
-              className="group relative overflow-hidden bg-gradient-to-r from-orange-600 to-red-600 hover:from-red-600 hover:to-orange-600 text-white font-bold px-8 py-4 text-lg border-2 border-orange-400/30 shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:scale-105"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                🍽️ Order Authentic Pakistani Food
-              </span>
-              <ChevronRight className="group-hover:translate-x-1 transition-transform relative z-10" size={24} />
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-6">
+            {/* Primary CTA - Extra Highlighted */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-red-400 to-yellow-400 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 animate-pulse"></div>
+              <Button
+                variant="brass"
+                size="xl"
+                onClick={onOrderNow}
+                className="relative group overflow-hidden bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 hover:from-yellow-500 hover:via-orange-500 hover:to-red-500 text-white font-black px-10 py-5 text-xl border-4 border-white/30 shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-110 rounded-2xl"
+              >
+                <span className="relative z-10 flex items-center gap-3 drop-shadow-lg">
+                  <span className="text-2xl animate-bounce">🍽️</span>
+                  Order Authentic Pakistani Food
+                </span>
+                <ChevronRight className="group-hover:translate-x-2 transition-transform relative z-10 drop-shadow-lg" size={28} />
+                
+                {/* Shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+              </Button>
+            </div>
             
-            <Button
-              variant="outline"
-              size="xl"
-              className="group bg-gradient-to-r from-yellow-900/20 to-orange-900/20 border-2 border-orange-400/40 text-orange-100 hover:bg-gradient-to-r hover:from-orange-600 hover:to-yellow-600 hover:text-white backdrop-blur-sm transition-all duration-300 px-8 py-4 text-lg font-semibold"
-            >
-              <span>📞 Reserve Table</span>
-            </Button>
+            {/* Secondary CTA - Also Enhanced */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <Button
+                variant="outline"
+                size="xl"
+                className="relative group bg-gradient-to-r from-yellow-900/40 to-orange-900/40 border-4 border-orange-300/60 text-orange-100 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-500 hover:text-white hover:border-white backdrop-blur-sm transition-all duration-300 px-10 py-5 text-xl font-bold transform hover:scale-105 rounded-2xl shadow-xl"
+              >
+                <span className="flex items-center gap-3 drop-shadow-lg">
+                  <span className="text-2xl">📞</span>
+                  Reserve Table
+                </span>
+              </Button>
+            </div>
           </div>
         </div>
 
