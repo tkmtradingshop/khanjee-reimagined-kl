@@ -14,6 +14,10 @@ import MinimalSignup from "@/components/MinimalSignup";
 import LiveOrderNotifications from "@/components/LiveOrderNotifications";
 import DeliveryProgressBar from "@/components/DeliveryProgressBar";
 import RecommendedDishes from "@/components/RecommendedDishes";
+import CookingReels from "@/components/CookingReels";
+import LiveKitchenFeed from "@/components/LiveKitchenFeed";
+import FoodDiscoveryCarousel from "@/components/FoodDiscoveryCarousel";
+import UrgencyBooster from "@/components/UrgencyBooster";
 import { ShoppingCart } from "lucide-react";
 
 interface CartItem {
@@ -144,6 +148,26 @@ const Index = () => {
         />
       </div>
 
+      {/* Cooking Reels */}
+      <CookingReels onOrderDish={(dishName) => scrollToSection('menu')} />
+
+      {/* Food Discovery Carousel */}
+      <FoodDiscoveryCarousel onAddToCart={(dish) => {
+        const menuItem = {
+          id: Date.now(),
+          name: dish.name,
+          price: parseFloat(dish.price.replace('RM ', '')),
+          description: dish.description,
+          category: 'trending',
+          rating: dish.rating,
+          spiceLevel: 2
+        };
+        addToCart(menuItem, 1);
+      }} />
+
+      {/* Live Kitchen Feed */}
+      <LiveKitchenFeed />
+
       {/* Menu Section */}
       <div id="menu">
         <MenuSection onAddToCart={addToCart} selectedBranch={selectedBranch} />
@@ -207,6 +231,9 @@ const Index = () => {
 
       {/* Floating Navigation */}
       <FloatingNav activeTab={activeTab} onTabChange={scrollToSection} />
+
+      {/* Urgency Booster */}
+      <UrgencyBooster />
     </div>
   );
 };
