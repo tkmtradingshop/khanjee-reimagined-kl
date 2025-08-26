@@ -9,6 +9,11 @@ import Footer from "@/components/Footer";
 import FloatingNav from "@/components/FloatingNav";
 import CartSheet from "@/components/CartSheet";
 import BranchSelector from "@/components/BranchSelector";
+import GoogleReviews from "@/components/GoogleReviews";
+import LoyaltyRewards from "@/components/LoyaltyRewards";
+import LiveOrderNotifications from "@/components/LiveOrderNotifications";
+import DeliveryProgressBar from "@/components/DeliveryProgressBar";
+import RecommendedDishes from "@/components/RecommendedDishes";
 import { ShoppingCart } from "lucide-react";
 
 interface CartItem {
@@ -106,6 +111,7 @@ const Index = () => {
   };
 
   const totalCartItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const cartTotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
     <div className="min-h-screen bg-background">
@@ -127,10 +133,16 @@ const Index = () => {
         <MenuSection onAddToCart={addToCart} selectedBranch={selectedBranch} />
       </div>
 
+      {/* Recommended Dishes */}
+      <RecommendedDishes onAddToCart={addToCart} />
+
       {/* About Section */}
       <div id="about">
         <AboutSection />
       </div>
+
+      {/* Loyalty Rewards */}
+      <LoyaltyRewards />
 
       {/* Reservation Section */}
       <div id="reserve">
@@ -142,8 +154,17 @@ const Index = () => {
         <ContactSection />
       </div>
 
+      {/* Google Reviews */}
+      <GoogleReviews />
+
       {/* Footer */}
       <Footer />
+
+      {/* Live Order Notifications */}
+      <LiveOrderNotifications />
+
+      {/* Delivery Progress Bar */}
+      <DeliveryProgressBar cartTotal={cartTotal} />
 
       {/* Floating Cart Button */}
       {totalCartItems > 0 && (
