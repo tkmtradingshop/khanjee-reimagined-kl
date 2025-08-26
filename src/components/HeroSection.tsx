@@ -44,26 +44,26 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
           <img
             src={heroImages[currentImage].src}
             alt="Khanjee Restaurant"
-            className="w-full h-full object-cover transition-all duration-1000 scale-105 animate-slow-zoom"
+            className="w-full h-full object-cover transition-all duration-1000"
           />
           {/* Futuristic Overlays */}
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-deep/90 via-emerald-deep/70 to-spice-red/40"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-emerald-deep via-transparent to-transparent"></div>
           
           {/* Geometric Pattern Overlay */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="w-full h-full geometric-pattern animate-pulse"></div>
+          <div className="absolute inset-0 opacity-10">
+            <div className="w-full h-full geometric-pattern"></div>
           </div>
 
-          {/* Holographic Scan Lines */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brass-gold/10 to-transparent animate-scan"></div>
+          {/* Subtle Scan Lines */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brass-gold/5 to-transparent"></div>
         </div>
       </div>
 
-      {/* Floating Elements */}
-      <div className="absolute top-1/4 left-10 w-2 h-2 bg-brass-gold rounded-full animate-float opacity-60"></div>
-      <div className="absolute top-1/3 right-20 w-1 h-1 bg-ivory-warm rounded-full animate-float-delayed opacity-40"></div>
-      <div className="absolute bottom-1/4 left-20 w-3 h-3 bg-spice-red/60 rounded-full animate-float-slow"></div>
+      {/* Subtle Floating Elements */}
+      <div className="absolute top-1/4 left-10 w-2 h-2 bg-brass-gold/40 rounded-full opacity-60"></div>
+      <div className="absolute top-1/3 right-20 w-1 h-1 bg-ivory-warm/30 rounded-full opacity-40"></div>
+      <div className="absolute bottom-1/4 left-20 w-3 h-3 bg-spice-red/30 rounded-full"></div>
 
       {/* Main Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
