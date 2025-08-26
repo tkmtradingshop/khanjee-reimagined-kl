@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus, Minus, Star, MapPin } from "lucide-react";
-import { ScarcityIndicator, PopularityBadge } from "@/components/CROEnhancements";
 
 // Import dish images
 import muttonLahoriKarahi from "@/assets/dishes/mutton-lahori-karahi.jpg";
@@ -29,9 +28,6 @@ interface MenuItem {
   rating: number;
   spiceLevel: number;
   image?: string;
-  isPopular?: boolean;
-  isBestSeller?: boolean;
-  remainingStock?: number;
 }
 
 // Real menu data from Khanjee app - Complete Menu
@@ -45,9 +41,7 @@ const menuData: MenuItem[] = [
     category: "signature", 
     rating: 4.9, 
     spiceLevel: 3,
-    image: muttonLahoriKarahi,
-    isBestSeller: true,
-    remainingStock: 12
+    image: muttonLahoriKarahi
   },
   { 
     id: 2, 
@@ -132,9 +126,7 @@ const menuData: MenuItem[] = [
     category: "signature", 
     rating: 4.8, 
     spiceLevel: 3,
-    image: chickenKarahi,
-    isPopular: true,
-    remainingStock: 15
+    image: chickenKarahi
   },
   { 
     id: 11, 
@@ -307,9 +299,7 @@ const menuData: MenuItem[] = [
     category: "rice", 
     rating: 4.9, 
     spiceLevel: 2,
-    image: chickenBiryani,
-    isBestSeller: true,
-    remainingStock: 8
+    image: chickenBiryani
   },
   { 
     id: 29, 
@@ -516,9 +506,22 @@ const MenuSection = ({ onAddToCart, selectedBranch }: MenuSectionProps) => {
     </div>
   );
 
-  // Don't render anything if no branch is selected
+  // Show branch selection message if no branch is selected
   if (!selectedBranch) {
-    return null;
+    return (
+      <section id="menu" className="py-16 bg-gradient-to-b from-background to-accent/5">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Select a Branch to View Menu
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Please choose your nearest branch above to see our menu and place orders
+            </p>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -558,17 +561,7 @@ const MenuSection = ({ onAddToCart, selectedBranch }: MenuSectionProps) => {
         {/* Menu Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredMenu.map(item => (
-            <div key={item.id} className="card-premium overflow-hidden group relative">
-              {/* CRO Enhancements - Badges */}
-              <ScarcityIndicator 
-                dishName={item.name} 
-                remaining={item.remainingStock || 10} 
-              />
-              <PopularityBadge 
-                isPopular={item.isPopular} 
-                isBestSeller={item.isBestSeller} 
-              />
-              
+            <div key={item.id} className="card-premium overflow-hidden group">
               {/* Dish Image */}
               {item.image && (
                 <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
