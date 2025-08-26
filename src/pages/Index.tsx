@@ -10,7 +10,7 @@ import FloatingNav from "@/components/FloatingNav";
 import CartSheet from "@/components/CartSheet";
 import BranchSelector from "@/components/BranchSelector";
 import GoogleReviews from "@/components/GoogleReviews";
-import VipClubSignup from "@/components/VipClubSignup";
+import MinimalSignup from "@/components/MinimalSignup";
 import LiveOrderNotifications from "@/components/LiveOrderNotifications";
 import DeliveryProgressBar from "@/components/DeliveryProgressBar";
 import RecommendedDishes from "@/components/RecommendedDishes";
@@ -120,6 +120,22 @@ const Index = () => {
         <HeroSection onOrderNow={() => scrollToSection('menu')} />
       </div>
 
+      {/* Branch Selection Message */}
+      {!selectedBranch && (
+        <section className="py-16 bg-gradient-to-b from-background to-accent/5">
+          <div className="container mx-auto px-6">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-foreground mb-4">
+                Select a Branch to View Menu
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Please choose your nearest branch below to see our menu and place orders
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Branch Selection */}
       <div id="branches">
         <BranchSelector 
@@ -141,8 +157,8 @@ const Index = () => {
         <AboutSection />
       </div>
 
-      {/* VIP Club Signup */}
-      <VipClubSignup />
+      {/* Minimal Signup */}
+      <MinimalSignup />
 
       {/* Reservation Section */}
       <div id="reserve">
