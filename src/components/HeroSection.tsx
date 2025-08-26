@@ -1,29 +1,29 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, MapPin, Clock, Star, Users, Award } from "lucide-react";
-import heroBiryaniPremium from "@/assets/hero-genz-biryani.jpg";
-import heroBBQPremium from "@/assets/hero-genz-bbq.jpg";
-import heroChapliKebab from "@/assets/hero-genz-karahi.jpg";
+import heroBiryaniPremium from "@/assets/hero-chicken-biryani-authentic.jpg";
+import heroBBQPremium from "@/assets/hero-pakistani-bbq-platter.jpg";
+import heroChapliKebab from "@/assets/hero-mutton-lahori-karahi.jpg";
 
 const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
   const heroImages = [
     {
       src: heroBiryaniPremium,
-      title: "Aesthetic Biryani Bowl",
-      subtitle: "Instagram-worthy saffron rice that hits different ✨",
-      stats: "📸 Insta-Famous • 🔥 Trending",
+      title: "Chicken Biryani",
+      subtitle: "Aromatic basmati rice with tender chicken, crafted with authentic Pakistani spices",
+      stats: "🍛 Signature Dish • ⭐ Most Popular",
     },
     {
       src: heroBBQPremium,
-      title: "Viral BBQ Platter",
-      subtitle: "Gen Z approved grilled perfection for your feed",
-      stats: "🔥 TikTok Trending • 💯 Fire",
+      title: "Pakistani BBQ Platter",
+      subtitle: "Fresh from the tandoor - chicken tikka, malai boti & seekh kebabs",
+      stats: "🔥 Tandoor Special • 🥩 Halal Certified",
     },
     {
       src: heroChapliKebab,
-      title: "Modern Karahi Vibes",
-      subtitle: "Traditional flavors with contemporary aesthetic appeal",
-      stats: "✨ Aesthetic Goals • 🌈 Colorful",
+      title: "Mutton Lahori Karahi",
+      subtitle: "Traditional copper karahi with tender mutton in rich, aromatic gravy",
+      stats: "👑 Chef's Pride • 🌶️ Authentic Recipe",
     },
   ];
 
@@ -37,8 +37,8 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Simplified Dynamic Background */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50">
+      {/* Authentic Pakistani Background */}
       <div className="absolute inset-0">
         <div className="relative w-full h-full">
           <img
@@ -46,98 +46,108 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
             alt="Khanjee Restaurant"
             className="w-full h-full object-cover transition-all duration-1000"
           />
-          {/* Neutral Minimal Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-gray-900/50 to-black/60"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+          {/* Pakistani Spice-inspired Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-900/85 via-red-800/70 to-yellow-800/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          
+          {/* Subtle Pattern Overlay */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="w-full h-full" style={{
+              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(255,140,0,0.3) 0%, transparent 50%), 
+                               radial-gradient(circle at 75% 75%, rgba(220,38,38,0.3) 0%, transparent 50%)`
+            }}></div>
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        {/* Live Stats Bar */}
+        {/* Authentic Stats Bar */}
         <div className="mb-6 flex flex-wrap justify-center gap-4 animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-xs font-medium border border-white/20">
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600/20 to-red-600/20 backdrop-blur-md rounded-full px-4 py-2 text-orange-100 text-xs font-medium border border-orange-400/30">
+            <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
             <Users size={14} />
-            247 people vibing
+            Serving 500+ families daily
           </div>
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-xs font-medium border border-white/20">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600/20 to-yellow-600/20 backdrop-blur-md rounded-full px-4 py-2 text-orange-100 text-xs font-medium border border-red-400/30">
             <Star size={14} />
-            4.9 ★ (Gen Z approved)
+            4.9 ★ Authentic Taste
           </div>
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-xs font-medium border border-white/20">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-600/20 to-orange-600/20 backdrop-blur-md rounded-full px-4 py-2 text-orange-100 text-xs font-medium border border-yellow-400/30">
             <Award size={14} />
-            TikTok Famous Restaurant
+            KL's Most Authentic Pakistani
           </div>
         </div>
 
-        {/* Location Badge */}
-        <div className="mb-6 inline-flex items-center gap-2 bg-black/20 backdrop-blur-md rounded-full px-6 py-3 text-white text-sm font-medium border border-white/30">
-          <div className="w-2 h-2 bg-gray-300 rounded-full animate-pulse"></div>
+        {/* Restaurant Badge */}
+        <div className="mb-8 inline-flex items-center gap-2 bg-gradient-to-r from-orange-600/30 to-red-600/30 backdrop-blur-md rounded-full px-6 py-3 text-orange-100 text-sm font-medium border border-orange-400/40">
+          <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
           <MapPin size={16} />
-          KL • Where the cool kids eat 😎
+          Kuala Lumpur • Authentic Pakistani Cuisine Since 2015
         </div>
 
-        {/* Main Heading with Minimalist Typography */}
+        {/* Main Brand Heading */}
         <div className="mb-8 animate-fade-in-up">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-4 tracking-tight leading-none">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-transparent bg-gradient-to-br from-orange-200 via-yellow-200 to-red-200 bg-clip-text mb-4 tracking-tight leading-none drop-shadow-lg">
             KHANJEE
           </h1>
           <div className="relative">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-light text-gray-200 mb-2 tracking-wide">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-light text-orange-100 mb-2 tracking-wide">
               {heroImages[currentImage].title}
             </h2>
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent"></div>
           </div>
         </div>
 
-        {/* Subtitle with Stats */}
+        {/* Authentic Description */}
         <div className="mb-8 animate-fade-in-delayed">
-          <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-4 max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
+          <p className="text-xl md:text-2xl lg:text-3xl text-orange-50 mb-4 max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
             {heroImages[currentImage].subtitle}
           </p>
-          <div className="text-sm md:text-base text-gray-200 bg-black/20 backdrop-blur-sm rounded-full px-6 py-2 inline-block border border-gray-400/20">
+          <div className="text-sm md:text-base text-orange-200 bg-gradient-to-r from-orange-900/30 to-red-900/30 backdrop-blur-sm rounded-full px-6 py-2 inline-block border border-orange-400/30">
             {heroImages[currentImage].stats}
           </div>
         </div>
 
-        {/* Enhanced CTA Section */}
+        {/* Authentic CTA Section */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 animate-fade-in-up-delayed">
           <div className="flex flex-col sm:flex-row gap-4">
             <Button
               variant="brass"
               size="xl"
               onClick={onOrderNow}
-              className="group relative overflow-hidden bg-white text-black hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 px-8 py-4 text-lg font-semibold border-2 border-gray-300"
+              className="group relative overflow-hidden bg-gradient-to-r from-orange-600 to-red-600 hover:from-red-600 hover:to-orange-600 text-white font-bold px-8 py-4 text-lg border-2 border-orange-400/30 shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:scale-105"
             >
-              <span className="relative z-10">🔥 Order Now</span>
+              <span className="relative z-10 flex items-center gap-2">
+                🍽️ Order Authentic Pakistani Food
+              </span>
               <ChevronRight className="group-hover:translate-x-1 transition-transform relative z-10" size={24} />
             </Button>
             
             <Button
               variant="outline"
               size="xl"
-              className="group bg-transparent border-2 border-white/30 text-white hover:bg-white hover:text-black backdrop-blur-sm transition-all duration-300 px-8 py-4 text-lg font-semibold"
+              className="group bg-gradient-to-r from-yellow-900/20 to-orange-900/20 border-2 border-orange-400/40 text-orange-100 hover:bg-gradient-to-r hover:from-orange-600 hover:to-yellow-600 hover:text-white backdrop-blur-sm transition-all duration-300 px-8 py-4 text-lg font-semibold"
             >
-              <span>📱 Book Table</span>
+              <span>📞 Reserve Table</span>
             </Button>
           </div>
         </div>
 
-        {/* Live Info Bar */}
+        {/* Restaurant Info Bar */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <div className="flex items-center gap-3 text-white bg-black/30 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
+          <div className="flex items-center gap-3 text-orange-100 bg-gradient-to-r from-orange-900/40 to-red-900/40 backdrop-blur-sm rounded-full px-6 py-3 border border-orange-400/30">
             <Clock size={18} />
             <span className="text-base font-medium">Open Daily 11:30 AM - 11:00 PM</span>
           </div>
           
-          <div className="flex items-center gap-3 text-white bg-black/20 backdrop-blur-sm rounded-full px-6 py-3 border border-white/30">
-            <div className="w-2 h-2 bg-gray-300 rounded-full animate-pulse"></div>
-            <span className="text-base font-medium">🚚 Fast Delivery • 15-25 min</span>
+          <div className="flex items-center gap-3 text-orange-100 bg-gradient-to-r from-red-900/30 to-yellow-900/30 backdrop-blur-sm rounded-full px-6 py-3 border border-red-400/30">
+            <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+            <span className="text-base font-medium">🚗 Free Delivery • Halal Certified</span>
           </div>
         </div>
 
-        {/* Simple Image Indicators */}
+        {/* Enhanced Image Indicators */}
         <div className="flex justify-center gap-4">
           {heroImages.map((_, index) => (
             <button
@@ -151,8 +161,8 @@ const HeroSection = ({ onOrderNow }: { onOrderNow: () => void }) => {
             >
               <div className={`w-12 h-1 rounded-full transition-all duration-300 ${
                 index === currentImage
-                  ? 'bg-white'
-                  : 'bg-white/30 hover:bg-white/50'
+                  ? 'bg-gradient-to-r from-orange-400 via-yellow-400 to-red-400 shadow-lg shadow-orange-400/50'
+                  : 'bg-orange-300/30 hover:bg-orange-300/50'
               }`}></div>
             </button>
           ))}
