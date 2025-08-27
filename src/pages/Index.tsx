@@ -4,7 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import MenuSection from "@/components/MenuSection";
 import AboutSection from "@/components/AboutSection";
 import ReservationSection from "@/components/ReservationSection";
-import ContactSection from "@/components/ContactSection";
+import VipBenefitsSection from "@/components/VipBenefitsSection";
 import Footer from "@/components/Footer";
 import FloatingNav from "@/components/FloatingNav";
 import CartSheet from "@/components/CartSheet";
@@ -149,9 +149,9 @@ const Index = () => {
         <ReservationSection />
       </div>
 
-      {/* Contact Section */}
+      {/* VIP Benefits Section */}
       <div id="contact">
-        <ContactSection />
+        <VipBenefitsSection />
       </div>
 
       {/* Google Reviews */}
