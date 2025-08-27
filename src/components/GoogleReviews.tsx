@@ -248,55 +248,51 @@ const GoogleReviews = () => {
           </div>
         </div>
 
-        {/* Featured Reviews Spotlight */}
+        {/* Recent Reviews Section */}
         <div className="mb-16">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-3 bg-white rounded-lg px-6 py-3 shadow-sm border border-border/50 mb-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-full px-8 py-4 shadow-lg border border-emerald-light/20 mb-6">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
                 alt="Google" 
-                className="w-6 h-6"
+                className="w-7 h-7"
               />
-              <span className="font-medium text-foreground">Recent Reviews</span>
-              <div className="flex items-center gap-1 text-xs text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
-                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                Live
+              <span className="font-bold text-foreground text-lg">Google Reviews</span>
+              <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                <svg className="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
               </div>
             </div>
-            <p className="text-muted-foreground text-sm">Swipe to see more authentic Google reviews</p>
           </div>
 
           {/* Reviews Carousel */}
-          <div className="relative">
+          <div className="relative max-w-6xl mx-auto">
             {/* Navigation Buttons */}
-            <div className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10">
-              <button
-                onClick={handlePrev}
-                disabled={currentIndex === 0}
-                className="w-9 h-9 rounded-full bg-white border border-border shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <ChevronLeft className="w-4 h-4 text-muted-foreground" />
-              </button>
-            </div>
+            <button
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 w-12 h-12 rounded-full bg-white border border-gray-200 shadow-lg items-center justify-center hover:shadow-xl hover:scale-105 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
             
-            <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10">
-              <button
-                onClick={handleNext}
-                disabled={currentIndex === maxIndex}
-                className="w-9 h-9 rounded-full bg-white border border-border shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <ChevronRight className="w-4 h-4 text-muted-foreground" />
-              </button>
-            </div>
+            <button
+              onClick={handleNext}
+              disabled={currentIndex === maxIndex}
+              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 w-12 h-12 rounded-full bg-white border border-gray-200 shadow-lg items-center justify-center hover:shadow-xl hover:scale-105 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+            >
+              <ChevronRight className="w-5 h-5 text-gray-600" />
+            </button>
 
             {/* Reviews Container */}
             <div 
-              className="overflow-hidden"
+              className="overflow-hidden bg-gray-50/50 rounded-3xl p-8"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
               <div 
-                className="flex transition-transform duration-300 ease-out"
+                className="flex transition-transform duration-300 ease-out gap-6"
                 style={{ 
                   transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
                   width: `${(featuredReviews.length / itemsPerView) * 100}%`
@@ -305,59 +301,55 @@ const GoogleReviews = () => {
                 {featuredReviews.map((review, index) => (
                   <div 
                     key={review.id}
-                    className="w-full md:w-1/3 px-3 flex-shrink-0"
-                    style={{ width: `${100 / itemsPerView}%` }}
+                    className="flex-shrink-0"
+                    style={{ width: `calc(${100 / itemsPerView}% - 1rem)` }}
                   >
-                    {/* Google Review Card */}
-                    <div className="bg-white border border-border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+                    {/* Clean Google Review Card */}
+                    <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
                       {/* Review Header */}
-                      <div className="flex items-start gap-3 mb-3">
-                        <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-medium text-sm flex-shrink-0">
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">
                           {review.avatar}
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <h4 className="font-medium text-foreground text-sm truncate">{review.name}</h4>
-                            <div className="flex items-center gap-1">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-1">
+                            <h4 className="font-semibold text-gray-900 text-base">{review.name}</h4>
+                            <div className="flex items-center">
                               {[...Array(review.rating)].map((_, i) => (
                                 <Star 
                                   key={i} 
-                                  className="w-3 h-3 fill-yellow-400 text-yellow-400" 
+                                  className="w-4 h-4 fill-yellow-400 text-yellow-400" 
                                 />
                               ))}
                             </div>
                           </div>
-                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <div className="flex items-center gap-2 text-sm text-gray-500">
+                            <Clock className="w-3.5 h-3.5" />
                             <span>{review.date}</span>
-                            <span>•</span>
-                            <MapPin className="w-3 h-3" />
-                            <span className="truncate">{review.location}</span>
                           </div>
                         </div>
                       </div>
 
                       {/* Review Content */}
-                      <div className="mb-3">
-                        <p className="text-muted-foreground text-sm leading-relaxed">
-                          {review.text}
+                      <div className="mb-4">
+                        <p className="text-gray-700 text-sm leading-relaxed font-medium">
+                          "{review.text}"
                         </p>
                       </div>
 
-                      {/* Review Actions */}
-                      <div className="flex items-center justify-between pt-2 border-t border-border/50">
-                        <div className="flex items-center gap-4">
-                          <button className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors">
-                            <ThumbsUp className="w-3 h-3" />
-                            Helpful
-                          </button>
+                      {/* Review Footer */}
+                      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <MapPin className="w-3.5 h-3.5" />
+                          <span>{review.location}</span>
                         </div>
-                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <div className="flex items-center gap-1">
                           <img 
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
                             alt="Google" 
-                            className="w-3 h-3"
+                            className="w-4 h-4"
                           />
-                          <span>Posted on Google</span>
+                          <span className="text-xs text-gray-500 font-medium">Google</span>
                         </div>
                       </div>
                     </div>
@@ -366,16 +358,16 @@ const GoogleReviews = () => {
               </div>
             </div>
 
-            {/* Pagination Dots */}
-            <div className="flex justify-center gap-1.5 mt-6">
+            {/* Modern Pagination Dots */}
+            <div className="flex justify-center gap-2 mt-8">
               {Array.from({ length: maxIndex + 1 }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                  className={`h-2 rounded-full transition-all duration-300 ${
                     index === currentIndex 
-                      ? 'bg-blue-500 w-6' 
-                      : 'bg-border w-1.5 hover:bg-muted-foreground'
+                      ? 'bg-emerald-light w-8 shadow-md' 
+                      : 'bg-gray-300 w-2 hover:bg-gray-400'
                   }`}
                 />
               ))}
