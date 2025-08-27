@@ -248,51 +248,64 @@ const GoogleReviews = () => {
           </div>
         </div>
 
-        {/* Recent Reviews Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-full px-8 py-4 shadow-lg border border-emerald-light/20 mb-6">
+        {/* Authentic Google Reviews Section */}
+        <div className="mb-16 cursor-none relative" 
+             onMouseEnter={(e) => {
+               const cursor = document.createElement('div');
+               cursor.className = 'fixed w-8 h-8 bg-blue-500/20 rounded-full pointer-events-none z-50 mix-blend-multiply transition-all duration-300';
+               cursor.id = 'google-cursor';
+               document.body.appendChild(cursor);
+               
+               const updateCursor = (e) => {
+                 cursor.style.left = e.clientX - 16 + 'px';
+                 cursor.style.top = e.clientY - 16 + 'px';
+               };
+               
+               e.currentTarget.addEventListener('mousemove', updateCursor);
+               e.currentTarget.addEventListener('mouseleave', () => {
+                 cursor.remove();
+               });
+             }}>
+          
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3 shadow-md border mb-4 hover:shadow-xl transition-all duration-300 hover:scale-105 group">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
                 alt="Google" 
-                className="w-7 h-7"
+                className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300"
               />
-              <span className="font-bold text-foreground text-lg">Google Reviews</span>
-              <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-              </div>
+              <span className="font-semibold text-gray-800">Recent Reviews</span>
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             </div>
           </div>
 
-          {/* Reviews Carousel */}
-          <div className="relative max-w-6xl mx-auto">
-            {/* Navigation Buttons */}
+          {/* Reviews Grid with Authentic Layout */}
+          <div className="relative max-w-7xl mx-auto">
+            {/* Navigation */}
             <button
               onClick={handlePrev}
               disabled={currentIndex === 0}
-              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 w-12 h-12 rounded-full bg-white border border-gray-200 shadow-lg items-center justify-center hover:shadow-xl hover:scale-105 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-20 w-10 h-10 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:scale-110 transition-all duration-300 disabled:opacity-50 disabled:hover:scale-100 group"
             >
-              <ChevronLeft className="w-5 h-5 text-gray-600" />
+              <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:-translate-x-0.5 transition-transform duration-200" />
             </button>
             
             <button
               onClick={handleNext}
               disabled={currentIndex === maxIndex}
-              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 w-12 h-12 rounded-full bg-white border border-gray-200 shadow-lg items-center justify-center hover:shadow-xl hover:scale-105 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-20 w-10 h-10 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:scale-110 transition-all duration-300 disabled:opacity-50 disabled:hover:scale-100 group"
             >
-              <ChevronRight className="w-5 h-5 text-gray-600" />
+              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:translate-x-0.5 transition-transform duration-200" />
             </button>
 
             {/* Reviews Container */}
             <div 
-              className="overflow-hidden bg-gray-50/50 rounded-3xl p-8"
+              className="overflow-hidden px-4"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
               <div 
-                className="flex transition-transform duration-300 ease-out gap-6"
+                className="flex transition-all duration-500 ease-out gap-6"
                 style={{ 
                   transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
                   width: `${(featuredReviews.length / itemsPerView) * 100}%`
@@ -301,56 +314,67 @@ const GoogleReviews = () => {
                 {featuredReviews.map((review, index) => (
                   <div 
                     key={review.id}
-                    className="flex-shrink-0"
-                    style={{ width: `calc(${100 / itemsPerView}% - 1rem)` }}
+                    className="flex-shrink-0 group"
+                    style={{ width: `calc(${100 / itemsPerView}% - 1.5rem)` }}
                   >
-                    {/* Clean Google Review Card */}
-                    <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
-                      {/* Review Header */}
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">
-                          {review.avatar}
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-1">
-                            <h4 className="font-semibold text-gray-900 text-base">{review.name}</h4>
-                            <div className="flex items-center">
-                              {[...Array(review.rating)].map((_, i) => (
-                                <Star 
-                                  key={i} 
-                                  className="w-4 h-4 fill-yellow-400 text-yellow-400" 
-                                />
-                              ))}
+                    {/* Authentic Google Review Card */}
+                    <div className="bg-white rounded-lg border border-gray-200 p-0 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 hover:rotate-1 group-hover:scale-[1.02] relative overflow-hidden">
+                      {/* Subtle hover glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      <div className="p-4 relative z-10">
+                        {/* Header with Avatar and Name */}
+                        <div className="flex items-start gap-3 mb-3">
+                          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-110">
+                            {review.avatar}
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h4 className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors duration-300">{review.name}</h4>
+                              <div className="flex items-center">
+                                {[...Array(review.rating)].map((_, i) => (
+                                  <Star 
+                                    key={i} 
+                                    className="w-4 h-4 fill-yellow-400 text-yellow-400 group-hover:scale-110 transition-transform duration-300" 
+                                    style={{ transitionDelay: `${i * 50}ms` }}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-1 text-xs text-gray-500">
+                              <Clock className="w-3 h-3" />
+                              <span>{review.date}</span>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2 text-sm text-gray-500">
-                            <Clock className="w-3.5 h-3.5" />
-                            <span>{review.date}</span>
+                        </div>
+
+                        {/* Review Text */}
+                        <div className="mb-3">
+                          <p className="text-gray-700 text-sm leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
+                            "{review.text}"
+                          </p>
+                        </div>
+
+                        {/* Footer */}
+                        <div className="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100 group-hover:border-gray-200 transition-colors duration-300">
+                          <div className="flex items-center gap-1">
+                            <MapPin className="w-3 h-3 group-hover:text-blue-500 transition-colors duration-300" />
+                            <span className="group-hover:text-gray-700 transition-colors duration-300">{review.location}</span>
+                          </div>
+                          <div className="flex items-center gap-1 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                            <img 
+                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
+                              alt="Google" 
+                              className="w-3 h-3 group-hover:rotate-12 transition-transform duration-300"
+                            />
+                            <span>Google</span>
                           </div>
                         </div>
                       </div>
 
-                      {/* Review Content */}
-                      <div className="mb-4">
-                        <p className="text-gray-700 text-sm leading-relaxed font-medium">
-                          "{review.text}"
-                        </p>
-                      </div>
-
-                      {/* Review Footer */}
-                      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <div className="flex items-center gap-2 text-xs text-gray-500">
-                          <MapPin className="w-3.5 h-3.5" />
-                          <span>{review.location}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
-                            alt="Google" 
-                            className="w-4 h-4"
-                          />
-                          <span className="text-xs text-gray-500 font-medium">Google</span>
-                        </div>
+                      {/* Interactive elements */}
+                      <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                        <ThumbsUp className="w-4 h-4 text-blue-500 hover:scale-125 transition-transform duration-200 cursor-pointer" />
                       </div>
                     </div>
                   </div>
@@ -358,16 +382,16 @@ const GoogleReviews = () => {
               </div>
             </div>
 
-            {/* Modern Pagination Dots */}
+            {/* Interactive Pagination */}
             <div className="flex justify-center gap-2 mt-8">
               {Array.from({ length: maxIndex + 1 }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`h-2 rounded-full transition-all duration-300 hover:scale-125 ${
                     index === currentIndex 
-                      ? 'bg-emerald-light w-8 shadow-md' 
-                      : 'bg-gray-300 w-2 hover:bg-gray-400'
+                      ? 'bg-blue-500 w-8 shadow-md' 
+                      : 'bg-gray-300 w-2 hover:bg-blue-300'
                   }`}
                 />
               ))}
