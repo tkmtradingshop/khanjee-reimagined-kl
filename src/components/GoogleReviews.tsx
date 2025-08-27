@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Star, Quote, ThumbsUp, MapPin, Clock, Verified, TrendingUp, Users, Award, Sparkles, Heart } from "lucide-react";
+import { Star, Quote, ThumbsUp, MapPin, Clock, Verified, TrendingUp, Users, Award, Sparkles, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const GoogleReviews = () => {
@@ -23,7 +23,7 @@ const GoogleReviews = () => {
       text: "Amazing flavors and generous portions. The BBQ platter was perfectly grilled and the spices were just right.",
       date: "1 week ago",
       verified: true,
-      featured: false,
+      featured: true,
       location: "Petaling Jaya"
     },
     {
@@ -45,7 +45,7 @@ const GoogleReviews = () => {
       text: "Excellent food quality and fast delivery. The chicken tikka masala is the best I've had in Malaysia!",
       date: "5 days ago",
       verified: true,
-      featured: false,
+      featured: true,
       location: "Subang Jaya"
     },
     {
@@ -67,23 +67,101 @@ const GoogleReviews = () => {
       text: "Love the ambiance and food quality. Staff is very friendly and accommodating. Will definitely come back!",
       date: "4 days ago",
       verified: true,
-      featured: false,
+      featured: true,
       location: "Mont Kiara"
+    },
+    {
+      id: 7,
+      name: "Raj Patel",
+      avatar: "RP",
+      rating: 5,
+      text: "Outstanding experience! The lamb curry was perfectly spiced and the hospitality was top-notch. A must-visit!",
+      date: "1 day ago",
+      verified: true,
+      featured: true,
+      location: "Bangsar"
+    },
+    {
+      id: 8,
+      name: "Fatimah Zahra",
+      avatar: "FZ",
+      rating: 5,
+      text: "Feels like home! Authentic flavors and generous portions. The kulfi dessert was the perfect ending to our meal.",
+      date: "3 days ago",
+      verified: true,
+      featured: true,
+      location: "Wangsa Maju"
+    },
+    {
+      id: 9,
+      name: "David Kim",
+      avatar: "DK",
+      rating: 5,
+      text: "First time trying Pakistani cuisine and I'm blown away! The staff guided us through the menu perfectly.",
+      date: "5 days ago",
+      verified: true,
+      featured: true,
+      location: "KLCC"
+    },
+    {
+      id: 10,
+      name: "Priya Sharma",
+      avatar: "PS",
+      rating: 5,
+      text: "The biryani here is legendary! Perfect rice, tender meat, and incredible aroma. Worth every penny!",
+      date: "2 weeks ago",
+      verified: true,
+      featured: true,
+      location: "Cheras"
     }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+
+  const featuredReviews = reviews.filter(review => review.featured);
+  const itemsPerView = 3;
+  const maxIndex = Math.max(0, featuredReviews.length - itemsPerView);
 
   useEffect(() => {
     setIsVisible(true);
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % (reviews.length - 2));
-    }, 5000);
-    return () => clearInterval(timer);
   }, []);
 
-  const featuredReviews = reviews.filter(review => review.featured);
+  const handleNext = () => {
+    if (currentIndex < maxIndex) {
+      setCurrentIndex(prev => prev + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(prev => prev - 1);
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    setDragStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    
+    const dragEnd = e.changedTouches[0].clientX;
+    const dragDistance = dragStart - dragEnd;
+    
+    if (Math.abs(dragDistance) > 50) { // minimum drag distance
+      if (dragDistance > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    
+    setIsDragging(false);
+  };
 
   return (
     <section className="relative bg-gradient-to-br from-background via-emerald-deep/5 to-brass-gold/5 py-24 overflow-hidden">
@@ -172,117 +250,133 @@ const GoogleReviews = () => {
 
         {/* Featured Reviews Spotlight */}
         <div className="mb-16">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brass-gold/20 to-spice-red/20 px-6 py-3 rounded-full mb-4">
               <Sparkles className="w-5 h-5 text-brass-gold" />
               <span className="font-bold text-foreground">Featured Customer Stories</span>
               <Sparkles className="w-5 h-5 text-brass-gold" />
             </div>
+            <p className="text-muted-foreground text-sm">Swipe to see more reviews</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 perspective-1000">
-            {featuredReviews.map((review, index) => (
+          {/* Reviews Carousel */}
+          <div className="relative">
+            {/* Navigation Buttons */}
+            <div className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10">
+              <button
+                onClick={handlePrev}
+                disabled={currentIndex === 0}
+                className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-brass-gold/20 flex items-center justify-center shadow-lg hover:bg-brass-gold hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10">
+              <button
+                onClick={handleNext}
+                disabled={currentIndex === maxIndex}
+                className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-brass-gold/20 flex items-center justify-center shadow-lg hover:bg-brass-gold hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Reviews Container */}
+            <div 
+              className="overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <div 
-                key={review.id}
-                className={`group relative transition-all duration-700 transform-gpu ${isVisible ? 'opacity-100 translate-y-0 rotate-x-0' : 'opacity-0 translate-y-10 rotate-x-12'}`}
+                className="flex transition-transform duration-300 ease-out"
                 style={{ 
-                  transitionDelay: `${index * 200}ms`,
-                  transformStyle: 'preserve-3d'
+                  transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+                  width: `${(featuredReviews.length / itemsPerView) * 100}%`
                 }}
               >
-                {/* 3D Container with enhanced shadows */}
-                <div className="relative group-hover:rotate-y-6 group-hover:rotate-x-2 transition-all duration-500 transform-gpu" style={{ transformStyle: 'preserve-3d' }}>
-                  {/* Multi-layered glow effects */}
-                  <div className="absolute -inset-2 bg-gradient-to-r from-brass-gold via-emerald-light to-spice-red rounded-3xl blur-3xl opacity-20 group-hover:opacity-60 group-hover:blur-2xl transition-all duration-500 animate-pulse"></div>
-                  <div className="absolute -inset-1 bg-gradient-to-r from-brass-gold/40 via-emerald-light/40 to-spice-red/40 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-all duration-500"></div>
-                  
-                  <div className="relative bg-white/95 backdrop-blur-md rounded-3xl p-8 border border-white/50 shadow-2xl hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] transition-all duration-500 hover:scale-105 hover:-translate-y-4" style={{ transform: 'translateZ(20px)' }}>
-                    {/* Floating Featured Badge with 3D effect */}
-                    <div className="absolute -top-6 -right-6 bg-gradient-to-br from-brass-gold via-spice-red to-brass-gold text-white px-5 py-2 rounded-full text-xs font-black shadow-2xl hover:scale-110 transition-all duration-300 animate-bounce" style={{ transform: 'translateZ(40px)' }}>
-                      <div className="flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-current animate-spin" />
-                        FEATURED
-                      </div>
-                    </div>
-
-                    {/* Review Header with enhanced 3D avatar */}
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="relative group-hover:rotate-y-12 transition-all duration-500" style={{ transformStyle: 'preserve-3d' }}>
-                        <div className="w-20 h-20 bg-gradient-to-br from-brass-gold via-emerald-light to-spice-red rounded-full flex items-center justify-center text-white font-black text-xl shadow-2xl hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.3)] transition-all duration-300" style={{ transform: 'translateZ(30px)' }}>
-                          {review.avatar}
-                        </div>
-                        {/* 3D ring effect */}
-                        <div className="absolute inset-0 w-20 h-20 rounded-full border-2 border-brass-gold/30 animate-ping"></div>
-                        <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-emerald-light rounded-full flex items-center justify-center border-4 border-white shadow-xl hover:scale-125 transition-all duration-300" style={{ transform: 'translateZ(50px)' }}>
-                          <Verified className="w-4 h-4 text-white animate-pulse" />
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-black text-foreground text-xl mb-1 group-hover:text-brass-gold transition-colors duration-300">{review.name}</h4>
-                        <div className="flex items-center gap-2 mb-2">
-                          <MapPin className="w-4 h-4 text-muted-foreground group-hover:text-emerald-light transition-colors duration-300" />
-                          <span className="text-sm text-muted-foreground group-hover:text-emerald-light transition-colors duration-300">{review.location}</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <div className="flex group-hover:scale-110 transition-transform duration-300">
-                            {[...Array(review.rating)].map((_, i) => (
-                              <Star 
-                                key={i} 
-                                className="w-6 h-6 fill-brass-gold text-brass-gold hover:scale-125 transition-all duration-300" 
-                                style={{ 
-                                  animationDelay: `${i * 100}ms`,
-                                  transform: `translateZ(${10 + i * 5}px) rotateY(${i * 5}deg)`
-                                }}
-                              />
-                            ))}
+                {featuredReviews.map((review, index) => (
+                  <div 
+                    key={review.id}
+                    className="w-full md:w-1/3 px-3 flex-shrink-0"
+                    style={{ width: `${100 / itemsPerView}%` }}
+                  >
+                    <div className="group relative h-full">
+                      <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-6 border border-brass-gold/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
+                        
+                        {/* Review Header */}
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-br from-brass-gold to-emerald-light rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">
+                            {review.avatar}
                           </div>
-                          <span className="bg-gradient-to-r from-brass-gold/20 to-spice-red/20 text-brass-gold text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm border border-brass-gold/30 group-hover:scale-105 transition-all duration-300">
-                            {review.date}
-                          </span>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-semibold text-foreground text-base mb-1 truncate">{review.name}</h4>
+                            <div className="flex items-center gap-2 mb-2">
+                              <MapPin className="w-3 h-3 text-muted-foreground flex-shrink-0" />
+                              <span className="text-xs text-muted-foreground truncate">{review.location}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="flex">
+                                {[...Array(review.rating)].map((_, i) => (
+                                  <Star 
+                                    key={i} 
+                                    className="w-4 h-4 fill-brass-gold text-brass-gold" 
+                                  />
+                                ))}
+                              </div>
+                              <span className="text-xs text-brass-gold font-medium bg-brass-gold/10 px-2 py-1 rounded">
+                                {review.date}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Review Content */}
+                        <div className="flex-1 mb-4">
+                          <div className="relative">
+                            <Quote className="absolute -top-2 -left-2 w-6 h-6 text-brass-gold/30" />
+                            <p className="text-muted-foreground leading-relaxed text-sm pl-4">
+                              "{review.text}"
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Review Footer */}
+                        <div className="flex items-center justify-between pt-3 border-t border-border/50">
+                          <div className="flex items-center gap-2">
+                            <img 
+                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
+                              alt="Google" 
+                              className="w-4 h-4"
+                            />
+                            <span className="text-xs font-medium text-emerald-light">Google Verified</span>
+                          </div>
+                          <div className="flex items-center gap-1 text-xs text-brass-gold cursor-pointer hover:text-spice-red transition-colors">
+                            <ThumbsUp className="w-3 h-3" />
+                            <span>Helpful</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-
-                    {/* Enhanced Review Content with floating quote */}
-                    <div className="relative mb-6 group-hover:transform group-hover:translateZ-4 transition-all duration-500">
-                      <Quote className="absolute -top-4 -left-4 w-12 h-12 text-brass-gold/40 group-hover:text-brass-gold/60 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500" style={{ transform: 'translateZ(20px)' }} />
-                      <div className="relative bg-gradient-to-br from-white/50 to-transparent rounded-2xl p-6 backdrop-blur-sm border border-white/30">
-                        <p className="text-muted-foreground leading-relaxed text-lg font-medium italic group-hover:text-foreground transition-colors duration-300">
-                          &quot;{review.text}&quot;
-                        </p>
-                      </div>
-                      {/* Floating particles effect */}
-                      <div className="absolute top-2 right-2 w-2 h-2 bg-brass-gold/40 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
-                      <div className="absolute bottom-4 left-8 w-1 h-1 bg-emerald-light/40 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
-                    </div>
-
-                    {/* Enhanced Review Footer with 3D elements */}
-                    <div className="flex items-center justify-between pt-4 border-t border-gradient-to-r from-brass-gold/20 via-emerald-light/20 to-spice-red/20">
-                      <div className="flex items-center gap-2 group-hover:scale-105 transition-all duration-300">
-                        <div className="relative">
-                          <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
-                            alt="Google" 
-                            className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300"
-                            style={{ transform: 'translateZ(10px)' }}
-                          />
-                          <div className="absolute inset-0 w-5 h-5 bg-emerald-light/20 rounded-full animate-pulse"></div>
-                        </div>
-                        <span className="text-sm font-semibold text-emerald-light group-hover:text-emerald-deep transition-colors duration-300">Google Verified</span>
-                      </div>
-                      <div className="flex items-center gap-1 group-hover:scale-105 transition-all duration-300 cursor-pointer">
-                        <ThumbsUp className="w-5 h-5 text-brass-gold group-hover:text-spice-red group-hover:scale-125 transition-all duration-300" style={{ transform: 'translateZ(15px)' }} />
-                        <span className="text-sm font-bold text-brass-gold group-hover:text-spice-red transition-colors duration-300">Helpful</span>
-                      </div>
-                    </div>
-
-                    {/* 3D depth indicator lines */}
-                    <div className="absolute top-4 right-4 w-1 h-8 bg-gradient-to-b from-brass-gold/30 to-transparent" style={{ transform: 'translateZ(60px) rotateX(45deg)' }}></div>
-                    <div className="absolute bottom-4 left-4 w-8 h-1 bg-gradient-to-r from-emerald-light/30 to-transparent" style={{ transform: 'translateZ(60px) rotateY(45deg)' }}></div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'bg-brass-gold w-6' 
+                      : 'bg-brass-gold/30 hover:bg-brass-gold/50'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
