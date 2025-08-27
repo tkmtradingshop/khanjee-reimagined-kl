@@ -169,66 +169,90 @@ const GoogleReviews = () => {
   }, [api]);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-background via-background to-secondary/5 relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent"></div>
+    <section className="py-16 md:py-24 bg-gradient-to-br from-background via-primary/5 to-secondary/10 relative overflow-hidden">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
+      </div>
       
-      <div className="container mx-auto px-6 relative">
-        {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 rounded-full p-0.5">
-              <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
-                  alt="Google" 
-                  className="w-5 h-5"
-                />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        {/* Striking Header */}
+        <div className={`text-center mb-12 md:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Google Badge with Animation */}
+          <div className="inline-flex items-center gap-3 mb-8 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
+            <div className="relative">
+              <div className="w-8 h-8 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 rounded-full p-0.5 animate-spin-slow">
+                <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
+                    alt="Google" 
+                    className="w-4 h-4"
+                  />
+                </div>
               </div>
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
             </div>
-            <span className="text-muted-foreground font-semibold text-lg">Google Reviews</span>
+            <span className="text-foreground font-bold text-sm md:text-base tracking-wide">VERIFIED REVIEWS</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-6">
-            Customer Stories
+          {/* Hero Title with Gradient */}
+          <h2 className="text-4xl md:text-7xl font-black mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-gradient-x">
+              What People
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-accent via-primary to-secondary bg-clip-text text-transparent animate-gradient-x" style={{ animationDelay: '0.5s' }}>
+              Are Saying
+            </span>
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Real experiences from our valued customers across Malaysia
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
+            Real stories from customers who experienced our authentic Pakistani cuisine
           </p>
         </div>
 
-        {/* Enhanced Stats */}
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="text-center group">
-            <div className="inline-block p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 mb-4 group-hover:scale-110 transition-transform duration-300">
-              <div className="flex items-center justify-center gap-1 mb-2">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 fill-primary text-primary animate-pulse" style={{ animationDelay: `${i * 0.1}s` }} />
-                ))}
+        {/* Bold Stats Section */}
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="stats-card group cursor-pointer">
+            <div className="relative bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl p-8 border border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/25">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <div className="flex items-center justify-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-6 h-6 fill-primary text-primary group-hover:scale-110 transition-transform duration-300" style={{ transitionDelay: `${i * 50}ms` }} />
+                  ))}
+                </div>
+                <div className="text-5xl md:text-6xl font-black text-primary mb-2">4.9</div>
+                <div className="text-sm md:text-base text-muted-foreground font-semibold uppercase tracking-wider">Average Rating</div>
               </div>
             </div>
-            <div className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent mb-2">4.9</div>
-            <div className="text-muted-foreground font-medium">Average Rating</div>
           </div>
           
-          <div className="text-center group">
-            <div className="inline-block p-4 rounded-2xl bg-gradient-to-br from-secondary/20 to-secondary/10 mb-4 group-hover:scale-110 transition-transform duration-300">
-              <div className="text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-2">2,347+</div>
+          <div className="stats-card group cursor-pointer">
+            <div className="relative bg-gradient-to-br from-secondary/20 to-secondary/5 rounded-3xl p-8 border border-secondary/20 hover:border-secondary/40 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-secondary/25">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <div className="text-5xl md:text-6xl font-black text-secondary mb-2">2.3K+</div>
+                <div className="text-sm md:text-base text-muted-foreground font-semibold uppercase tracking-wider">Happy Customers</div>
+              </div>
             </div>
-            <div className="text-muted-foreground font-medium">Happy Customers</div>
           </div>
           
-          <div className="text-center group">
-            <div className="inline-block p-4 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/10 mb-4 group-hover:scale-110 transition-transform duration-300">
-              <div className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent mb-2">98%</div>
+          <div className="stats-card group cursor-pointer">
+            <div className="relative bg-gradient-to-br from-accent/20 to-accent/5 rounded-3xl p-8 border border-accent/20 hover:border-accent/40 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-accent/25">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <div className="text-5xl md:text-6xl font-black text-accent mb-2">98%</div>
+                <div className="text-sm md:text-base text-muted-foreground font-semibold uppercase tracking-wider">Recommend Us</div>
+              </div>
             </div>
-            <div className="text-muted-foreground font-medium">Recommend Us</div>
           </div>
         </div>
 
-        {/* 3D Carousel Reviews */}
-        <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        {/* Ultra-Modern Carousel Reviews */}
+        <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Carousel 
             setApi={setApi}
             className="w-full max-w-7xl mx-auto"
@@ -237,133 +261,214 @@ const GoogleReviews = () => {
               loop: true,
             }}
           >
-            <CarouselContent className="-ml-2 md:-ml-4">
+            <CarouselContent className="-ml-3 md:-ml-6">
               {reviews.map((review, index) => (
-                <CarouselItem key={review.id} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                  <div className="review-card-3d group">
-                    <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-3xl p-8 h-full shadow-lg hover:shadow-2xl transition-all duration-500 transform-gpu perspective-1000">
-                      {/* Card Inner */}
-                      <div className="relative z-10">
-                        {/* Header */}
-                        <div className="flex items-center gap-4 mb-6">
-                          <div className={`w-16 h-16 bg-gradient-to-br ${review.avatar_color} rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                            {review.avatar}
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-bold text-foreground text-lg">{review.name}</h4>
-                            <div className="flex items-center gap-2 text-muted-foreground">
-                              <MapPin className="w-4 h-4" />
-                              <span className="text-sm">{review.location}</span>
+                <CarouselItem key={review.id} className="pl-3 md:pl-6 basis-full sm:basis-1/2 lg:basis-1/3">
+                  <div className="review-card-ultra group cursor-pointer h-full">
+                    <div className="relative bg-gradient-to-br from-card via-card/95 to-card/90 backdrop-blur-xl border-2 border-transparent rounded-3xl p-6 md:p-8 h-full shadow-2xl hover:shadow-3xl transition-all duration-700 transform-gpu hover:scale-[1.02] hover:-translate-y-2 review-glow">
+                      {/* Dynamic Border Animation */}
+                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary via-secondary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm"></div>
+                      <div className="absolute inset-0.5 rounded-3xl bg-gradient-to-br from-card via-card/95 to-card/90 backdrop-blur-xl"></div>
+                      
+                      {/* Card Content */}
+                      <div className="relative z-10 h-full flex flex-col">
+                        {/* Header with Enhanced Avatar */}
+                        <div className="flex items-start gap-4 mb-6">
+                          <div className="relative">
+                            <div className={`w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br ${review.avatar_color} rounded-2xl flex items-center justify-center text-white font-black text-base md:text-lg shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                              {review.avatar}
+                            </div>
+                            {/* Status Indicator */}
+                            <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-card flex items-center justify-center animate-pulse">
+                              <div className="w-2 h-2 bg-white rounded-full"></div>
                             </div>
                           </div>
+                          
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-black text-foreground text-lg md:text-xl truncate mb-1">{review.name}</h4>
+                            <div className="flex items-center gap-2 text-muted-foreground mb-2">
+                              <MapPin className="w-4 h-4 flex-shrink-0" />
+                              <span className="text-sm font-medium truncate">{review.location}</span>
+                            </div>
+                            <div className="flex gap-0.5">
+                              {[...Array(review.rating)].map((_, i) => (
+                                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400 group-hover:scale-110 transition-transform duration-300" style={{ transitionDelay: `${i * 100}ms` }} />
+                              ))}
+                            </div>
+                          </div>
+                          
                           {review.verified && (
-                            <div className="flex flex-col items-center gap-1">
-                              <Verified className="w-6 h-6 text-blue-500" />
-                              <span className="text-xs text-blue-500 font-medium">Verified</span>
+                            <div className="flex flex-col items-center gap-1 flex-shrink-0">
+                              <Verified className="w-6 h-6 text-blue-500 group-hover:scale-110 transition-transform duration-300" />
+                              <span className="text-xs text-blue-500 font-bold uppercase tracking-wider">Verified</span>
                             </div>
                           )}
                         </div>
 
-                        {/* Rating */}
-                        <div className="flex items-center justify-between mb-6">
-                          <div className="flex gap-1">
-                            {[...Array(review.rating)].map((_, i) => (
-                              <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                            ))}
+                        {/* Quote with Modern Styling */}
+                        <div className="relative flex-1 mb-6">
+                          <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity duration-300">
+                            <Quote className="w-4 h-4 text-white" />
                           </div>
-                          <span className="text-sm text-muted-foreground bg-secondary/50 px-3 py-1 rounded-full">
-                            {review.date}
-                          </span>
+                          <blockquote className="text-muted-foreground leading-relaxed text-base md:text-lg font-medium pl-8 relative">
+                            <span className="absolute left-0 top-0 text-4xl text-primary/20 font-black">"</span>
+                            {review.text}
+                            <span className="absolute bottom-0 right-0 text-4xl text-primary/20 font-black">"</span>
+                          </blockquote>
                         </div>
 
-                        {/* Quote */}
-                        <div className="relative mb-6">
-                          <Quote className="absolute -top-3 -left-3 w-8 h-8 text-primary/20" />
-                          <p className="text-muted-foreground leading-relaxed pl-6 text-base">
-                            "{review.text}"
-                          </p>
-                        </div>
-
-                        {/* Footer */}
-                        <div className="flex items-center justify-between pt-6 border-t border-border/50">
-                          <div className="flex items-center gap-2">
-                            <div className="w-5 h-5 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 rounded-full p-0.5">
-                              <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
-                                <img 
-                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
-                                  alt="Google" 
-                                  className="w-3 h-3"
-                                />
+                        {/* Enhanced Footer */}
+                        <div className="flex items-center justify-between pt-6 border-t-2 border-gradient-to-r from-transparent via-border to-transparent">
+                          <div className="flex items-center gap-3">
+                            <div className="relative">
+                              <div className="w-6 h-6 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 rounded-full p-0.5 animate-spin-slow">
+                                <div className="w-full h-full bg-card rounded-full flex items-center justify-center">
+                                  <img 
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
+                                    alt="Google" 
+                                    className="w-3 h-3"
+                                  />
+                                </div>
                               </div>
                             </div>
-                            <span className="text-xs text-muted-foreground font-medium">Google Reviews</span>
+                            <span className="text-xs text-muted-foreground font-bold uppercase tracking-wider">Google Review</span>
                           </div>
-                          <div className="text-xs text-muted-foreground">
-                            Review #{index + 1}
+                          
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-muted-foreground bg-secondary/30 px-2 py-1 rounded-full font-medium">
+                              {review.date}
+                            </span>
+                            <div className="w-1 h-1 bg-muted-foreground/30 rounded-full"></div>
+                            <span className="text-xs text-muted-foreground font-medium">
+                              #{index + 1}
+                            </span>
                           </div>
                         </div>
                       </div>
 
-                      {/* 3D Effects */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      {/* Floating Elements */}
+                      <div className="absolute top-4 right-4 w-3 h-3 bg-primary/20 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute bottom-4 left-4 w-2 h-2 bg-secondary/30 rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ animationDelay: '1s' }}></div>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
             
-            {/* Custom Navigation */}
-            <div className="flex items-center justify-center gap-4 mt-12">
-              <CarouselPrevious className="relative static translate-y-0 w-12 h-12 rounded-2xl bg-primary/10 border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110" />
+            {/* Ultra-Modern Navigation */}
+            <div className="flex items-center justify-center gap-6 mt-16">
+              <CarouselPrevious className="relative static translate-y-0 w-14 h-14 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 border-2 border-primary/30 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-primary/50" />
               
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-muted-foreground font-medium">
+              <div className="flex items-center gap-4 bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl px-6 py-3">
+                <span className="text-sm text-muted-foreground font-bold uppercase tracking-wider">
                   {current} of {count}
                 </span>
-                <div className="flex gap-1">
+                <div className="w-px h-6 bg-border"></div>
+                <div className="flex gap-2">
                   {Array.from({ length: Math.min(count, 5) }).map((_, i) => (
                     <div
                       key={i}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        i === (current - 1) % 5 ? 'bg-primary scale-125' : 'bg-primary/30'
+                      className={`transition-all duration-500 rounded-full ${
+                        i === (current - 1) % 5 
+                          ? 'w-8 h-3 bg-gradient-to-r from-primary to-secondary' 
+                          : 'w-3 h-3 bg-muted-foreground/30 hover:bg-muted-foreground/50'
                       }`}
                     />
                   ))}
                 </div>
               </div>
               
-              <CarouselNext className="relative static translate-y-0 w-12 h-12 rounded-2xl bg-primary/10 border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110" />
+              <CarouselNext className="relative static translate-y-0 w-14 h-14 rounded-2xl bg-gradient-to-r from-secondary/20 to-accent/20 border-2 border-secondary/30 hover:bg-gradient-to-r hover:from-secondary hover:to-accent hover:text-white transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-secondary/50" />
             </div>
           </Carousel>
         </div>
 
-        {/* Enhanced CTA Section */}
-        <div className={`text-center max-w-4xl mx-auto mt-20 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-3xl p-12 border border-border/50 backdrop-blur-sm">
-            <h3 className="text-3xl font-bold text-foreground mb-6">
-              Share Your Experience
-            </h3>
-            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Join thousands of satisfied customers and help others discover the authentic taste of Pakistan
-            </p>
+        {/* Revolutionary CTA Section */}
+        <div className={`mt-20 md:mt-32 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="relative bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-3xl md:rounded-[3rem] p-8 md:p-16 border-2 border-transparent overflow-hidden group">
+            {/* Animated Background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-3xl md:rounded-[3rem]"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-accent opacity-20 group-hover:opacity-40 transition-opacity duration-1000 rounded-3xl md:rounded-[3rem] blur-xl"></div>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button
-                onClick={() => window.open('https://g.page/r/khanjee-reviews', '_blank')}
-                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                <Star className="w-5 h-5 mr-3" />
-                Write a Review
-              </Button>
+            {/* Content */}
+            <div className="relative z-10 text-center max-w-4xl mx-auto">
+              <div className="mb-8">
+                <div className="inline-flex items-center gap-3 mb-6 px-6 py-3 bg-card/50 backdrop-blur-md border border-border/50 rounded-2xl">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 animate-pulse" style={{ animationDelay: `${i * 200}ms` }} />
+                    ))}
+                  </div>
+                  <span className="text-muted-foreground font-bold text-sm uppercase tracking-wider">Join 2.3K+ Happy Customers</span>
+                </div>
+              </div>
               
-              <Button
-                variant="outline"
-                onClick={() => window.open('https://maps.google.com/?q=Khanjee+Restaurant+KL', '_blank')}
-                className="border-2 border-primary/20 hover:bg-primary/5 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105"
-              >
-                <MapPin className="w-5 h-5 mr-3" />
-                Find Our Location
-              </Button>
+              <h3 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent animate-gradient-x">
+                  Share Your
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-secondary via-primary to-accent bg-clip-text text-transparent animate-gradient-x" style={{ animationDelay: '0.5s' }}>
+                  Experience
+                </span>
+              </h3>
+              
+              <p className="text-lg md:text-xl text-muted-foreground mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
+                Help others discover the authentic taste of Pakistan and become part of our growing community
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Button
+                  onClick={() => window.open('https://g.page/r/khanjee-reviews', '_blank')}
+                  className="group relative bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground px-10 py-6 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 overflow-hidden min-w-[200px]"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative z-10 flex items-center gap-3">
+                    <Star className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
+                    <span>Write Review</span>
+                  </div>
+                </Button>
+                
+                <Button
+                  variant="outline"
+                  onClick={() => window.open('https://maps.google.com/?q=Khanjee+Restaurant+KL', '_blank')}
+                  className="group relative border-3 border-primary/30 hover:border-primary/60 bg-card/50 backdrop-blur-md hover:bg-primary/5 px-10 py-6 rounded-2xl font-bold text-lg transition-all duration-500 hover:scale-105 overflow-hidden min-w-[200px]"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative z-10 flex items-center gap-3">
+                    <MapPin className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
+                    <span>Find Location</span>
+                  </div>
+                </Button>
+              </div>
+              
+              {/* Trust Indicators */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 pt-12 border-t border-border/30">
+                <div className="flex items-center justify-center gap-3 opacity-70 hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-8 h-8 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 rounded-full p-0.5">
+                    <div className="w-full h-full bg-card rounded-full flex items-center justify-center">
+                      <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" 
+                        alt="Google" 
+                        className="w-4 h-4"
+                      />
+                    </div>
+                  </div>
+                  <span className="text-sm font-semibold text-muted-foreground">Google Verified</span>
+                </div>
+                
+                <div className="flex items-center justify-center gap-3 opacity-70 hover:opacity-100 transition-opacity duration-300">
+                  <Verified className="w-6 h-6 text-blue-500" />
+                  <span className="text-sm font-semibold text-muted-foreground">100% Authentic</span>
+                </div>
+                
+                <div className="flex items-center justify-center gap-3 opacity-70 hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                    <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                  </div>
+                  <span className="text-sm font-semibold text-muted-foreground">Active Community</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
